@@ -4,12 +4,11 @@ public class Matrix{
     private float[][] m;
     private int nRow;
     private int nCol;
-    //private int maxRow = 1000;
-    //private int maxCol = 1000;
+    
     
     //konstruktor
     public Matrix(){
-        m = new float[1000][1000];
+        m = new float[1000][1000]; //matrix 1000x1000
         for(int i=0; i<1000; i++){
             for(int j=0; j<1000; j++){
                 m[i][j]=-9999;
