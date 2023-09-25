@@ -5,9 +5,9 @@ public class Matrix {
     // private static final int COL_CAP = 100;
     // Final means unchangeable
 
-    private double[][] matrx;
-    private int rowEff;
-    private int colEff;
+    public double[][] matrx;
+    public int rowEff;
+    public int colEff;
 
     public Matrix(int nRows, int nCols) {
         this.rowEff = nRows;
