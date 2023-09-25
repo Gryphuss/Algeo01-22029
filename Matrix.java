@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class Matrix {
-    private static final int ROW_CAP = 100;
-    private static final int COL_CAP = 100;
+    // private static final int ROW_CAP = 100;
+    // private static final int COL_CAP = 100;
     // Final means unchangeable
 
     private double[][] matrx;
