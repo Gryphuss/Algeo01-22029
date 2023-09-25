@@ -60,7 +60,7 @@ public class Matrix {
     }
 
     public static Matrix multiplyByConst(Matrix m, int x) {
-        Matrix after = new Matrix(m.rowEff, m.rowEff);
+        Matrix after = new Matrix(m.rowEff, m.colEff);
         for (int i = 0; i < after.rowEff; i++) {
             for (int j = 0; j < after.colEff; j++) {
                 after.matrx[i][j] *= x;
