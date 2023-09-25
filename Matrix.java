@@ -10,9 +10,14 @@ public class Matrix {
     private int colEff;
 
     public Matrix(int nRows, int nCols) {
-        this.matrx = new double[ROW_CAP][COL_CAP];
         this.rowEff = nRows;
         this.colEff = nCols;
+        this.matrx = new double[nRows][nCols];
+        for (int i = 0; i < rowEff; i++) {
+            for (int j = 0; j < colEff; j++) {
+                this.matrx[i][j] = 0;
+            }
+        }
     }
 
     // 60% not sure if this will work
