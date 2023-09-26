@@ -32,4 +32,49 @@ public class OBE {
             }
         }
     }
+
+    public static double kofaktor(Matrix m, int p, int q) {
+        Matrix sub = new Matrix(m.getCol() - 1, m.getRow() - 1);
+        double det;
+
+        int i = 0;
+        int j = 0;
+
+        for (int r = 0; r < m.getRow(); r++) {
+            for (int c = 0; c < m.getCol(); c++) {
+                if (r != p && c != q) {
+                    sub.mem[i][j++] = m.mem[r][c];
+                    if (j == m.getCol() - 1) {
+                        j = 0;
+                        i++;
+                    }
+                }
+            }
+        }
+
+        if ((p + q) % 2 == 0) {
+            det = determinanKofaktor(sub);
+        } else {
+            det = -determinanKofaktor(sub);
+        }
+
+        return det;
+    }
+
+    public static double determinanKofaktor(Matrix m) {
+        double det = 0;
+
+        if (m.getRow() == 1 && m.getCol() == 1) {
+            det = m.mem[0][0];
+        }
+
+        else {
+            int i = 0;
+            for (int j = 0; j < m.getCol(); j++) {
+                det += (m.mem[i][j] * kofaktor(m, i, j));
+
+            }
+        }
+        return det;
+    }
 }
