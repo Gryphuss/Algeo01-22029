@@ -22,6 +22,18 @@ public class Matrix {
         }
     }
 
+    public void matrixIdentity(){ //I.S Matrix pasti persegi
+        for(int i=0;i<this.rowEff;i++){
+            for(int j=0;j<this.colEff;j++){
+                if(i == j){
+                    this.mem[i][j] = 1;
+                }else{
+                    this.mem[i][j] = 0;
+                }
+            }
+        }
+    }
+
     public int getRow(){
         return this.rowEff;
     }
