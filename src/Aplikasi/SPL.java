@@ -3,6 +3,12 @@ import java.util.*;
 import Matriks.*;
 
 public class SPL {
+    public static void displayArray(String[] arr){
+        for(int i=0;i<arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println();
+    }
     public static boolean cekAllArray(int[] arr, int val){
         for(int i=0;i<arr.length;i++){
             if (arr[i]!=val) return false;
@@ -18,14 +24,14 @@ public class SPL {
     }
 
     public static String[] SPLGauss(Matrix m){
-        int varParam = 97,row = m.getRow(),col = m.getCol();
+        int row = m.getRow(),col = m.getCol();
         
         double[] konstanta = new double[col-1];
-        Arrays.fill(konstanta,-9999);
+        Arrays.fill(konstanta,0);
 
-        int[][] jmlhParam = new int[col-1][col-1];
+        double[][] jmlhParam = new double[col-1][col-1];
         for(int i=0;i<col-1;i++){
-            Arrays.fill(jmlhParam[i],-9999);
+            Arrays.fill(jmlhParam[i],0);
         }
         String[] solusi = new String[col-1];
         Arrays.fill(solusi, "");
@@ -33,21 +39,19 @@ public class SPL {
         OBE.Gauss(m);
         if(cekAllArrayIdx(m.mem[row-1], 0, 0, col-2) && m.mem[row-1][col-1]!=0) return solusi;
 
+        char varParam = 'a';
         for(int i=row-1;i>=0;i--){
             int colLead = m.findColLead1(i);
             if (colLead==-1) continue;
             konstanta[colLead] = m.mem[i][col-1];
-            Arrays.fill(jmlhParam[colLead], 0);
 
             for(int j=colLead+1;j<col-1;j++){
                 if(m.mem[i][j]!=0 ){
-                    if(cekAllArray(jmlhParam[j],-9999) && konstanta[j]==-9999){
-                        Arrays.fill(jmlhParam[j], 0);
+                    if(solusi[j]==""){
                         jmlhParam[j][j] = 1;
-                        konstanta[j] = 0;
                         jmlhParam[colLead][j] -= m.mem[i][j];
 
-                        solusi[j] +=(char) varParam;
+                        solusi[j] += String.valueOf(varParam);
                         varParam += 1;
                     }else{
                         for(int k=0;k<col-1;k++){
@@ -57,62 +61,75 @@ public class SPL {
                     konstanta[colLead] -= konstanta[j]*m.mem[i][j];
                 }
             }
-            if (!cekAllArray(jmlhParam[colLead], -9999)){
-                for(int j=0;j<col-1;j++){
-                    if(jmlhParam[colLead][j]!=0){
-                        solusi[colLead] += jmlhParam[colLead][j]+solusi[j]+"+";
+
+            for(int j=colLead+1;j<col-1;j++){
+                if(jmlhParam[colLead][j]!=0){
+                    if(solusi[colLead]!=""){
+                        if(jmlhParam[colLead][j]>0){
+                            solusi[colLead] += "+";
+                        }
                     }
+                    if(jmlhParam[colLead][j]==-1){
+                        solusi[colLead] += "-";
+                    }else if(jmlhParam[colLead][j]!=1){
+                        solusi[colLead] += String.valueOf(jmlhParam[colLead][j]); 
+                    }
+                    solusi[colLead] += String.valueOf(solusi[j]);
                 }
             }
-            solusi[colLead] += konstanta[colLead];
+            if(konstanta[colLead]>0 && solusi[colLead]!="") solusi[colLead] += "+";
+            if(konstanta[colLead]!=0 || solusi[colLead]==""){
+                solusi[colLead] += String.valueOf(konstanta[colLead]);
+            }
         }
         return solusi;    
-    }
+    }    
 
     public static String[] SPLGaussJordan(Matrix m){
-        int varParam = 97,row = m.getRow(),col = m.getCol();
-        
-        double[] konstanta = new double[col-1];
-        Arrays.fill(konstanta,-9999);
+        int row = m.getRow(),col = m.getCol();
 
-        int[][] jmlhParam = new int[col-1][col-1];
-        for(int i=0;i<col-1;i++){
-            Arrays.fill(jmlhParam[i],-9999);
-        }
         String[] solusi = new String[col-1];
         Arrays.fill(solusi, "");
 
         OBE.GaussJordan(m);
         if(cekAllArrayIdx(m.mem[row-1], 0, 0, col-2) && m.mem[row-1][col-1]!=0) return solusi;
-
+        
+        char varParam = 'a';
         for(int i=row-1;i>=0;i--){
             int colLead = m.findColLead1(i);
             if (colLead==-1) continue;
-            konstanta[colLead] = m.mem[i][col-1];
-            Arrays.fill(jmlhParam[colLead], 0);
+            double konstanta = m.mem[i][col-1];
 
             for(int j=colLead+1;j<col-1;j++){
                 if(m.mem[i][j]!=0 ){
-                    if(cekAllArray(jmlhParam[j],-9999) && konstanta[j]==-9999){
-                        Arrays.fill(jmlhParam[j], 0);
-                        jmlhParam[j][j] = 1;
-                        konstanta[j] = 0;
-
-                        solusi[j] +=(char) varParam;
+                    if(solusi[j]==""){
+                        solusi[j] += String.valueOf(varParam);
                         varParam += 1;
                     }
-                    jmlhParam[colLead][j] -= m.mem[i][j];
-                }
-            }
-            if (!cekAllArray(jmlhParam[colLead], -9999)){
-                for(int j=0;j<col-1;j++){
-                    if(jmlhParam[colLead][j]!=0){
-                        solusi[colLead] += jmlhParam[colLead][j]+solusi[j]+"+";
+
+                    if(m.mem[i][j]>0){
+                        solusi[colLead] += "-";
+                        if(m.mem[i][j]!=1) solusi[colLead] += String.valueOf(m.mem[i][j]);
+                        solusi[colLead] += solusi[j];
+                    }else{
+                        double val = m.mem[i][j]*(-1);
+                        if(solusi[colLead]!="") solusi[colLead] += "+";
+                        if(val!=1) solusi[colLead] += String.valueOf(val); 
+                        solusi[colLead] += solusi[j];
                     }
                 }
             }
-            solusi[colLead] += konstanta[colLead];
+            if(konstanta>0 && solusi[colLead]!="") solusi[colLead] += "+";
+            if(konstanta!=0 || solusi[colLead]==""){
+                solusi[colLead] += String.valueOf(konstanta);
+            }
         }
         return solusi;
+    }
+
+    public static void main(String[] args){
+        Matrix tesMatrix = new Matrix(3, 5);
+        tesMatrix.readMatrix();
+        displayArray(SPLGauss(tesMatrix));
     }
 }
