@@ -41,7 +41,7 @@ public class SPL {
                 }
                 for (int i = 0; i < m.getRow(); i++) {
                     double ans = Xn[i];
-                    out += ("x_" + (i + 1) + " = " + String.format("%.2f", ans) + "\n");
+                    out += ("x" + (i + 1) + " = " + String.format("%.2f", ans) + "\n");
                 }
             }
         } else {

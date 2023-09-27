@@ -12,6 +12,14 @@ public class Matrix {
         this.mem = new double[row][col];
     }
 
+    public void setRow(int n){
+        this.rowEff = n;
+    }
+
+    public void setCol(int n){
+        this.colEff = n;
+    }
+
     public void readMatrix(){
         Scanner obj = new Scanner(System.in);
         for(int i=0;i<this.rowEff;i++){
@@ -72,6 +80,18 @@ public class Matrix {
         return -1;
     }
 
+    public Matrix kali(Matrix a, Matrix b){
+        Matrix mhasil = new Matrix(a.getRow(),b.getCol());
+        for(int i = 0; i<mhasil.getRow(); i++){
+            for(int j = 0; j<mhasil.getCol(); j++){
+                mhasil.mem[i][j] = 0;
+                for(int k = 0; k<a.getCol(); k++){
+                    mhasil.mem[i][j] += a.mem[i][k] * b.mem[k][j];
+                }
+            }
+        }
+        return mhasil;
+    }
     public void displayMatrix(){
         for(int i=0;i<this.getRow();i++){
             for(int j=0;j<this.getCol();j++){
