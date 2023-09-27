@@ -12,6 +12,14 @@ public class Matrix {
         this.mem = new double[row][col];
     }
 
+    public void setRow(int n){
+        this.rowEff = n;
+    }
+
+    public void setCol(int n){
+        this.colEff = n;
+    }
+
     public void readMatrix(){
         Scanner obj = new Scanner(System.in);
         for(int i=0;i<this.rowEff;i++){
