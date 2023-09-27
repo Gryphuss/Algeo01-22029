@@ -19,7 +19,7 @@ public class SPL {
                 k++;
             }
         }
-        // m.splitMatrix(m1, m2, m.colEff - 1);
+        
         if (m1.isSquare()) {
             if (m1.isSingular()) {
                 out = "SPL memiliki banyak solusi atau tidak memiliki solusi sehingga tidak dapat menggunakan Kaidah Crammer.\n";
