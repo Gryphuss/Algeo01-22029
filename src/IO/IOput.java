@@ -23,8 +23,8 @@ public class IOput{
         }
         return n;
     }
-    
-    public static void read(Matrix mm){
+
+    public static void readFileToMatrix(Matrix mm){
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
         try {
@@ -59,7 +59,7 @@ public class IOput{
 
     }
 
-    public static void readKeyboard(Matrix m){
+    public static void readKeyboardToMatrix(Matrix m){
         for(int i = 0 ; i < m.getRow(); i ++){
             int j;
             j = 0;
@@ -75,7 +75,7 @@ public class IOput{
     }
 
 
-    public static void writeMatrixString(Matrix m, String str){
+    public static void writeMatrixAndStringToFile(Matrix m, String str){
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
 
@@ -100,7 +100,7 @@ public class IOput{
         }
     }
 
-    public static void writeMatrix(Matrix m){
+    public static void writeMatrixToFile(Matrix m){
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
 
