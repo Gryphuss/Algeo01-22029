@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Invers{
 
-    public Matriks Invers(Matrix m){
+    public Matriks invers(Matrix m){
         m = m.setUpInvers(m);
         m = m.takeInversInvers(m);
 
