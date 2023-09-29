@@ -25,7 +25,7 @@ public class IOput{
                     String [] mmString = num.split(" ");
                     for(String numnum : mmString){
                         float f = Float.parseFloat(numnum);
-                        mm.insertElmt(f,i,j);
+                        mm.mem[i][j];
                         j++;
                     }
                     mm.setCol(j);
@@ -52,7 +52,7 @@ public class IOput{
             FileWriter cc = new FileWriter(nameFile);
             for(int i = 0; i<m.getRow(); i++){
                 for(int j = 0; j<m.getCol(); j++){
-                    String num = Float.toString(m.ELMT(i,j));
+                    String num = Float.toString(m.mem[i][j]);
                     cc.write(num);
                     cc.write(" ");
                 }
