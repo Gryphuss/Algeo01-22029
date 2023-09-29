@@ -56,7 +56,154 @@ public class IOput{
             System.out.println("Error");
             e.printStackTrace();
         }
+    }
 
+    public static void readFileToMatrixInterpolasi(Matrix mm, double x){
+        Scanner scanFile = new Scanner(System.in);
+        String nameFile = scanFile.nextLine();
+        try {
+            File file = new File(nameFile);
+            Scanner readFile = new Scanner(file);
+            int i,j;
+            i = 0;
+            j = 0;
+            mm.setRow(1);
+            mm.setCol(1);
+            while (readFile.hasNext()) {
+                String cc = readFile.nextLine();
+                String[] mString = cc.split("\n");
+                for(String num : mString){
+                    String [] mmString = num.split(" ");
+                    for(String numnum : mmString){
+                        double f = Double.parseDouble(numnum);
+                        mm.mem[i][j] = f;
+                        j++;
+                    }
+                    mm.setCol(j);
+                    j = 0;
+                    i++;
+                }
+                mm.setRow(i); 
+            }
+            x = mm.mem[i-1][0];
+            mm.setRow(i-2); 
+            readFile.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error");
+            e.printStackTrace();
+        }
+    }
+
+    public static void readFileToMatrixBicubic(Matrix mm, double x, double y){
+        Scanner scanFile = new Scanner(System.in);
+        String nameFile = scanFile.nextLine();
+        try {
+            File file = new File(nameFile);
+            Scanner readFile = new Scanner(file);
+            int i,j;
+            i = 0;
+            j = 0;
+            mm.setRow(1);
+            mm.setCol(1);
+            while (readFile.hasNext()) {
+                String cc = readFile.nextLine();
+                String[] mString = cc.split("\n");
+                for(String num : mString){
+                    String [] mmString = num.split(" ");
+                    for(String numnum : mmString){
+                        double f = Double.parseDouble(numnum);
+                        mm.mem[i][j] = f;
+                        j++;
+                    }
+                    mm.setCol(j);
+                    j = 0;
+                    i++;
+                }
+                mm.setRow(i); 
+            }
+            x = mm.mem[i-1][0];
+            y = mm.mem[i-1][1];
+            mm.setRow(i-2); 
+            readFile.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error");
+            e.printStackTrace();
+        }
+    }
+
+    public static void readFileToMatrixRegresi(Matrix mm, int[] x){
+        Scanner scanFile = new Scanner(System.in);
+        String nameFile = scanFile.nextLine();
+        try {
+            File file = new File(nameFile);
+            Scanner readFile = new Scanner(file);
+            int i,j;
+            i = 0;
+            j = 0;
+            mm.setRow(1);
+            mm.setCol(1);
+            while (readFile.hasNext()) {
+                String cc = readFile.nextLine();
+                String[] mString = cc.split("\n");
+                for(String num : mString){
+                    String [] mmString = num.split(" ");
+                    for(String numnum : mmString){
+                        double f = Double.parseDouble(numnum);
+                        mm.mem[i][j] = f;
+                        j++;
+                    }
+                    mm.setCol(j);
+                    j = 0;
+                    i++;
+                }
+                mm.setRow(i); 
+            }
+            for(int k = 0; k < mm.getCol(); k++){
+                x[k] = mm.mem[i-1][k];
+            }
+            mm.setRow(i-2); 
+            readFile.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error");
+            e.printStackTrace();
+        }
+    }
+
+    public static void readFileToMatrixBicubic(Matrix mm, int x, int y){
+        Scanner scanFile = new Scanner(System.in);
+        String nameFile = scanFile.nextLine();
+        try {
+            File file = new File(nameFile);
+            Scanner readFile = new Scanner(file);
+            int i,j;
+            i = 0;
+            j = 0;
+            mm.setRow(1);
+            mm.setCol(1);
+            while (readFile.hasNext()) {
+                String cc = readFile.nextLine();
+                String[] mString = cc.split("\n");
+                for(String num : mString){
+                    String [] mmString = num.split(" ");
+                    for(String numnum : mmString){
+                        double f = Double.parseDouble(numnum);
+                        mm.mem[i][j] = f;
+                        j++;
+                    }
+                    mm.setCol(j);
+                    j = 0;
+                    i++;
+                }
+                mm.setRow(i); 
+            }
+            x = mm.mem[i-1][0];
+            y = mm.mem[i-1][1];
+            mm.setRow(i-2); 
+            readFile.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error");
+            e.printStackTrace();
+        }
     }
 
     public static void readKeyboardToMatrix(Matrix m){

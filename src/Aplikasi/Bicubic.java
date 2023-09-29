@@ -29,10 +29,17 @@ public class Bicubic{
         }
     }
 
-    public void bicubic(){
+    public void bicubic(Matrix m){
+        int x,y;
         if(inputMode() == 1){
-            
+            readFileToMatrix(m);
+        }else{
+            readKeyboardToMatrix(m);
+            Scanner obj = new Scanner();
+            x = obj.nextInt();
+            y = obj.nextInt();
         }
+
     }
 
     public Matrix buatX(){
