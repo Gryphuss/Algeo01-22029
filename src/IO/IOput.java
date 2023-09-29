@@ -24,7 +24,7 @@ public class IOput{
                 for(String num : mString){
                     String [] mmString = num.split(" ");
                     for(String numnum : mmString){
-                        float f = Float.parseFloat(numnum);
+                        double f = Double.parseDouble(numnum);
                         mm.mem[i][j] = f;
                         j++;
                     }
