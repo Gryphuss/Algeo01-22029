@@ -57,9 +57,6 @@ public class IOput{
         }
     }
 
-    public Matrix setBicubic(Matrix m){
-        if(inputMode());
-    }
 
     public void writeMatrixString(Matrix m, String str){
         Scanner scanFile = new Scanner(System.in);
