@@ -57,7 +57,32 @@ public class IOput{
         }
     }
 
-    public void write(Matrix m){
+    public void writeMatrixString(Matrix m, String str){
+        Scanner scanFile = new Scanner(System.in);
+        String nameFile = scanFile.nextLine();
+
+        try {
+            File file = new File(nameFile);
+            file.createNewFile();
+            FileWriter cc = new FileWriter(nameFile);
+            for(int i = 0; i<m.getRow(); i++){
+                for(int j = 0; j<m.getCol(); j++){
+                    String num = Double.toString(m.mem[i][j]);
+                    cc.write(num);
+                    cc.write(" ");
+                }
+                cc.write("\n");
+            }
+            cc.write(str);
+            cc.write("\n");
+            cc.close();
+        } catch (IOException e) {
+            System.out.println("Error");
+            e.printStackTrace();
+        }
+    }
+
+    public void writeMatrix(Matrix m){
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
 
