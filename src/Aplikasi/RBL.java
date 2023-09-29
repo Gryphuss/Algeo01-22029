@@ -1,4 +1,5 @@
 package Aplikasi;
+import Matriks.*;
 
 public class RBL {
     public static double[] solveRLB(Matrix m){

@@ -1,5 +1,6 @@
 package Aplikasi;
 import java.util.*;
+import Matriks.*;
 
 public class SPL {
     public static void displayArray(String[] arr){
