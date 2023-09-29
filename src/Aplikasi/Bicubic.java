@@ -17,7 +17,7 @@ public class Bicubic{
         return (i * j * (int)Math.pow(x,i-1) * (int)Math.pow(y,j-1));
     }
 
-    public Matrix setBicubic(Matrix m){
+    public static Matrix setBicubic(Matrix m){
         Matrix mBaru = new Matrix(16,1);
         int idx;
         idx = 0;
@@ -29,20 +29,26 @@ public class Bicubic{
         }
     }
 
-    public void bicubic(Matrix m){
-        int x,y;
+    public static void bicubic(Matrix m){
+        double x,y;
         if(inputMode() == 1){
-            readFileToMatrix(m);
+            readFileToMatrixBicubic(m);
         }else{
             readKeyboardToMatrix(m);
             Scanner obj = new Scanner();
-            x = obj.nextInt();
-            y = obj.nextInt();
+            x = obj.nextDouble();
+            y = obj.nextDouble();
         }
+        m = setBicubic(m);
+        Matrix mx = new Matrix(0,0);
+        mx = buatX;
+        double f;
+        f = bicubicInterpolation(x,y,mx,m); 
+        System.out.println(f);
 
     }
 
-    public Matrix buatX(){
+    public static Matrix buatX(){
         Matrix mx = new Matrix(16,16);
 
         for(int i=0; i<16; i++){
@@ -94,7 +100,7 @@ public class Bicubic{
         return mx;
     }
 
-    public double bicubicInterpolation(double x, double y, Matrix mIn, Matrix mX){
+    public static double bicubicInterpolation(double x, double y, Matrix mIn, Matrix mX){
         Matrix mhasil = new Matrix(1,16);
         mhasil = mhasil.kali(mX,mIn);
         double hasil = 0;
