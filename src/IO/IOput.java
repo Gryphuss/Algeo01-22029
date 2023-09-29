@@ -42,6 +42,21 @@ public class IOput{
 
     }
 
+    public void readKeyboard(Matrix m){
+        for(int i = 0 ; i < m.getRow(); i ++){
+            int j;
+            j = 0;
+            Scanner obj = new Scanner(System.in);
+            String strRow = obj.nextLine();
+            String[] Row = strRow.split(" ");
+            for(String num : Row){
+                double d = Double.parseDouble(num);
+                m.mem[i][j] = d;
+                j ++ ;
+            }
+        }
+    }
+
     public void write(Matrix m){
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
