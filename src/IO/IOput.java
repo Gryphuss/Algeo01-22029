@@ -7,6 +7,23 @@ import java.io.IOException;
 import Matriks.*;
 
 public class IOput{
+    public static int inputMode(){
+        int n;
+        Scanner obj = new Scanner(System.in);
+        System.out.println("Tentukan metode input!");
+        System.out.println("1. Pembacaan File");
+        System.out.println("2. Pembacaan dari Keyboard");
+        while(true){
+            n = obj.nextInt();
+            if(n!=1 && n!=2){
+                System.out.println("Pilihan hanya antara 1 atau 2!");
+            }else{
+                break;
+            }
+        }
+        return n;
+    }
+    
     public static void read(Matrix mm){
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
