@@ -8,7 +8,7 @@ public class Invers{
         m = m.setUpInvers(m);
         m = m.takeInversInvers(m);
 
-        if(inputMode == 1){
+        if(inputMode() == 1){
             writeMatrix(m);
         }else{
             System.out.println("Matriks balikan dari matrix awal:\n");

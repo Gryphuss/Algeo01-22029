@@ -17,6 +17,10 @@ public class Bicubic{
         return (i * j * (int)Math.pow(x,i-1) * (int)Math.pow(y,j-1));
     }
 
+    public void bicubic(){
+        
+    }
+
     public Matrix buatX(){
         Matrix mx = new Matrix(16,16);
 
@@ -68,7 +72,6 @@ public class Bicubic{
         }
         return mx;
     }
-
 
     public double bicubicInterpolation(double x, double y, Matrix mIn, Matrix mX){
         Matrix mhasil = new Matrix(1,16);
