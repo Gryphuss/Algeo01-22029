@@ -17,8 +17,22 @@ public class Bicubic{
         return (i * j * (int)Math.pow(x,i-1) * (int)Math.pow(y,j-1));
     }
 
+    public Matrix setBicubic(Matrix m){
+        Matrix mBaru = new Matrix(16,1);
+        int idx;
+        idx = 0;
+        for(int i = 0; i < m.getRow(); i++){
+            for(int j = 0; j < m.getCol(); j++){
+                mBaru.mem[idx] = m.mem[i][j];
+                idx ++;
+            }
+        }
+    }
+
     public void bicubic(){
-        
+        if(inputMode() == 1){
+            
+        }
     }
 
     public Matrix buatX(){
