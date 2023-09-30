@@ -86,7 +86,7 @@ public class IOput{
                 mm.setRow(i); 
             }
             x = mm.mem[i-1][0];
-            mm.setRow(i-2); 
+            mm.setRow(i-1); 
             readFile.close();
         } catch (FileNotFoundException e) {
             System.out.println("Error");
@@ -123,7 +123,7 @@ public class IOput{
             }
             x = mm.mem[i-1][0];
             y = mm.mem[i-1][1];
-            mm.setRow(i-2); 
+            mm.setRow(i-1); 
             readFile.close();
         } catch (FileNotFoundException e) {
             System.out.println("Error");
@@ -161,7 +161,7 @@ public class IOput{
             for(int k = 0; k < mm.getCol(); k++){
                 x[k] = mm.mem[i-1][k];
             }
-            mm.setRow(i-2); 
+            mm.setRow(i-1); 
             readFile.close();
         } catch (FileNotFoundException e) {
             System.out.println("Error");
@@ -198,7 +198,7 @@ public class IOput{
             }
             x = mm.mem[i-1][0];
             y = mm.mem[i-1][1];
-            mm.setRow(i-2); 
+            mm.setRow(i-1); 
             readFile.close();
         } catch (FileNotFoundException e) {
             System.out.println("Error");
