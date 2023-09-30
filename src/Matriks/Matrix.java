@@ -101,4 +101,15 @@ public class Matrix {
             System.out.println();
         }
     }
+
+    public boolean isSingular() {
+        if (OBE.determinanKofaktor(this) == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isSquare() {
+        return (this.getCol() == this.getRow());
+    }
 }

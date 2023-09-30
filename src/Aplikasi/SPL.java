@@ -175,10 +175,4 @@ public class SPL {
         }
         return out;
     }
-
-    public static void main(String[] args){
-        Matrix tesMatrix = new Matrix(3, 5);
-        tesMatrix.readMatrix();
-        displayArray(SPLGauss(tesMatrix));
-    }
 }

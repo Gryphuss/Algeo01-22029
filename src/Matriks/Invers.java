@@ -1,6 +1,7 @@
 package Matriks;
 import java.util.Scanner;
 
+import IO.IOput;
 
 public class Invers{
 
@@ -8,7 +9,7 @@ public class Invers{
         m = m.setUpInvers(m);
         m = m.takeInversInvers(m);
 
-        if(inputMode() == 1){
+        if(IOput.inputMode() == 1){
             writeMatrix(m);
         }else{
             System.out.println("Matriks balikan dari matrix awal:\n");
