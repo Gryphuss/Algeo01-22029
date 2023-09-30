@@ -115,4 +115,26 @@ public class Matrix {
     public boolean isSquare() {
         return (this.getCol() == this.getRow());
     }
+
+    public Matrix transpose(){
+        Matrix mNew = new Matrix(this.getCol(), this.getRow());
+        for(int i=0;i<this.getRow();i++){
+            for(int j=0;j<this.getCol();j++){
+                mNew.mem[j][i] = this.mem[i][j];
+            }
+        }
+        return mNew;
+    }
+
+    public double sigmaSampel(Matrix m, int bykSampel, int roww, int coll){
+        double sumSampel=0;
+        for(int i=0;i<bykSampel;i++){
+            if(roww==0){
+                sumSampel += m.mem[coll-1][i];
+            }else{
+                sumSampel += m.mem[roww-1][i]*m.mem[coll-1][i];
+            }
+        }
+        return sumSampel;
+    }
 }
