@@ -1,5 +1,6 @@
 package Aplikasi;
 import Matriks.*;
+import IOput.*;
 import java.util.Scanner;
 
 public class Bicubic{
