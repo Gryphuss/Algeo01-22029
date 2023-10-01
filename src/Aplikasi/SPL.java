@@ -187,7 +187,7 @@ public class SPL {
                 koef.mem[i][j] = M.mem[i][j];
             }
         }
-        for(int k = 0; k < M.getRow(); k++){
+
         for(int k = 0; k < M.getRow(); k++){
             kons.mem[k][0] = M.mem[k][M.getCol()-1];
         }
