@@ -41,7 +41,7 @@ public class Bicubic{
         double x,y;
         // menentukan jenis input
         if(IOput.inputMode() == 1){
-            IOput.readFileToMatrixBicubic(m);
+            IOput.readFileToMatrixBicubic(m,xy);
             x = xy.mem[0][0];
             y = xy.mem[0][1];
         }else{
