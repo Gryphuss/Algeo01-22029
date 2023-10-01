@@ -8,11 +8,15 @@ import Matriks.*;
 
 public class IOput{
     public static int inputMode(){
+    // Fungsi: untuk menentukan output yang diinginkan
+    // output melalui terminal atau melalui file .txt
         int n;
         Scanner obj = new Scanner(System.in);
+        // Pertanyaan kepada user
         System.out.println("Tentukan metode input!");
         System.out.println("1. Pembacaan File");
         System.out.println("2. Pembacaan dari Keyboard");
+        // memastikan input user benar
         while(true){
             n = obj.nextInt();
             if(n!=1 && n!=2){
@@ -21,13 +25,17 @@ public class IOput{
                 break;
             }
         }
+        // hasil
         return n;
     }
 
     public static void readFileToMatrix(Matrix mm){
+    // Fungsi: membaca matrix dari file
+        // membaca nama file
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
         try {
+            // proses membaca file dan mengisi matrix 
             File file = new File(nameFile);
             Scanner readFile = new Scanner(file);
             int i,j;
@@ -53,15 +61,20 @@ public class IOput{
             }
             readFile.close();
         } catch (FileNotFoundException e) {
+            // kasus error
             System.out.println("Error");
             e.printStackTrace();
         }
     }
 
     public static void readFileToMatrixInterpolasi(Matrix mm, double x){
+    // Fungsi: membaca matrix dari file
+    // sekaligus membaca nilai x untuk mencari f(x)
+        // membaca nama file
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
         try {
+            // proses mengisi matrix
             File file = new File(nameFile);
             Scanner readFile = new Scanner(file);
             int i,j;
@@ -85,19 +98,25 @@ public class IOput{
                 }
                 mm.setRow(i); 
             }
+            // membaca nilai x
             x = mm.mem[i-1][0];
             mm.setRow(i-1); 
             readFile.close();
         } catch (FileNotFoundException e) {
+            // kasus error
             System.out.println("Error");
             e.printStackTrace();
         }
     }
 
     public static void readFileToMatrixBicubic(Matrix mm, double x, double y){
+    // Fungsi: membaca matrix dari file
+    // sekaligus membaca nilai x,y untuk mencari nilai f(x,y)
+        // membaca namafile
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
         try {
+            // proses membaca file dan mengisi matrix
             File file = new File(nameFile);
             Scanner readFile = new Scanner(file);
             int i,j;
@@ -121,20 +140,26 @@ public class IOput{
                 }
                 mm.setRow(i); 
             }
+            // membaca nilai x,y
             x = mm.mem[i-1][0];
             y = mm.mem[i-1][1];
             mm.setRow(i-1); 
             readFile.close();
         } catch (FileNotFoundException e) {
+            // kasus error
             System.out.println("Error");
             e.printStackTrace();
         }
     }
 
     public static void readFileToMatrixRegresi(Matrix mm, int[] x){
+    // Fungsi: membaca matrix dari file
+    // sekaligus membaca nilai x0-xn untuk mencari nilai f(x0,...,xn)
+        // membaca namafile
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
         try {
+            // proses membaca file dan mengisi matrix
             File file = new File(nameFile);
             Scanner readFile = new Scanner(file);
             int i,j;
@@ -158,18 +183,20 @@ public class IOput{
                 }
                 mm.setRow(i); 
             }
+            // membaca x0-xn
             for(int k = 0; k < mm.getCol(); k++){
                 x[k] = mm.mem[i-1][k];
             }
             mm.setRow(i-1); 
             readFile.close();
         } catch (FileNotFoundException e) {
+            // kasus error
             System.out.println("Error");
             e.printStackTrace();
         }
     }
 
-    public static void readFileToMatrixBicubic(Matrix mm, int x, int y){
+    /*public static void readFileToMatrixBicubic(Matrix mm, int x, int y){
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
         try {
@@ -204,9 +231,11 @@ public class IOput{
             System.out.println("Error");
             e.printStackTrace();
         }
-    }
+    }*/
 
     public static void readKeyboardToMatrix(Matrix m){
+    // Fungsi: membaca matrix dari input keyboard
+        // proses membaca matrix
         for(int i = 0 ; i < m.getRow(); i ++){
             int j;
             j = 0;
@@ -223,12 +252,17 @@ public class IOput{
 
 
     public static void writeMatrixAndStringToFile(Matrix m, String str){
+    // Fungsi: menulis matrix ke suatu file
+    // sekaligus menulis string tambahan untuk suatu keterangan
+        // membaca nama file
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
 
         try {
             File file = new File(nameFile);
+            // membuat file jika tidak ada
             file.createNewFile();
+            // proses menulis matrix dalam file
             FileWriter cc = new FileWriter(nameFile);
             for(int i = 0; i<m.getRow(); i++){
                 for(int j = 0; j<m.getCol(); j++){
@@ -238,22 +272,28 @@ public class IOput{
                 }
                 cc.write("\n");
             }
+            // menuliskan string tambahan
             cc.write(str);
             cc.write("\n");
             cc.close();
         } catch (IOException e) {
+            // kasus error
             System.out.println("Error");
             e.printStackTrace();
         }
     }
 
     public static void writeMatrixToFile(Matrix m){
+    // Fungsi: menulis matrix ke suatu file
+        // membaca nama file
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
 
         try {
             File file = new File(nameFile);
+            // membuat file jika tidak ada
             file.createNewFile();
+            // proses menulis file
             FileWriter cc = new FileWriter(nameFile);
             for(int i = 0; i<m.getRow(); i++){
                 for(int j = 0; j<m.getCol(); j++){
@@ -265,6 +305,7 @@ public class IOput{
             }
             cc.close();
         } catch (IOException e) {
+            // kasus error
             System.out.println("Error");
             e.printStackTrace();
         }
