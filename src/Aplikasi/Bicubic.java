@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Bicubic{
 
+    // Fungsi-fungsi untuk membuatt matrix X
     public int f(int x, int y, int i, int j){
         return ((int)Math.pow(x,i) * (int)Math.pow(y,j));
     }
@@ -19,6 +20,8 @@ public class Bicubic{
     }
 
     public static Matrix setBicubic(Matrix m){
+    // Fungsi: mempersiapkan matrix y
+        // mengubah bentuk matrix dari 4x4 menjadi 16x1
         Matrix mBaru = new Matrix(16,1);
         int idx;
         idx = 0;
@@ -31,7 +34,9 @@ public class Bicubic{
     }
 
     public static void bicubic(Matrix m){
+    // Fungsi: menampilkan nilai f(x,y) hasil bicubic
         double x,y;
+        // menentukan jenis input
         if(inputMode() == 1){
             readFileToMatrixBicubic(m);
         }else{
@@ -40,18 +45,22 @@ public class Bicubic{
             x = obj.nextDouble();
             y = obj.nextDouble();
         }
+        // proses menghitung f(x,y)
         m = setBicubic(m);
         Matrix mx = new Matrix(0,0);
         mx = buatX;
         double f;
         f = bicubicInterpolation(x,y,mx,m); 
+        // output
         System.out.println(f);
 
     }
 
     public static Matrix buatX(){
+    // Fungsi: membuat matrix X
+        // inisialisasi matrix berukuran 16x16
         Matrix mx = new Matrix(16,16);
-
+        //proses mengisi matrix
         for(int i=0; i<16; i++){
             for(int j=0; j<16; j++){
                 if(i<4){
@@ -102,8 +111,12 @@ public class Bicubic{
     }
 
     public static double bicubicInterpolation(double x, double y, Matrix mIn, Matrix mX){
+    // Fungsi: mencari nilai f(x,y) dengan bicubic
+        // inisialisasi matrix mhasil
         Matrix mhasil = new Matrix(1,16);
+        // proses mengisi matrix mhasil
         mhasil = mhasil.kali(mX,mIn);
+        // menghitung f(x,y)
         double hasil = 0;
         for(int i=0; i<4; i++){
             for(int j=0; j<4; j++){
