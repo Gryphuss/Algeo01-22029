@@ -5,6 +5,7 @@ public class Invers {
 
     public static Matrix invers(Matrix m) {
     // Fungsi: menghasilkan matrix invers dari m
+        Matrix temp = new Matrix(m.getRow(),m.getCol());
         // mensetup matrix
         m = setUpInvers(m);
         // menginvers matrix
@@ -26,8 +27,6 @@ public class Invers {
 
             }
         }
-        // output
-        return m;
     }
 
     public static Matrix setUpInvers(Matrix m) {

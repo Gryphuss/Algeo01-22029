@@ -188,6 +188,7 @@ public class SPL {
             }
         }
         for(int k = 0; k < M.getRow(); k++){
+        for(int k = 0; k < M.getRow(); k++){
             kons.mem[k][0] = M.mem[k][M.getCol()-1];
         }
         Matrix hasil = new Matrix(M.getRow(),1);
@@ -200,7 +201,7 @@ public class SPL {
         }
         return str;
     }
-
+    
     public static void menuSPL(){
         Scanner obj = new Scanner(System.in);
         System.out.println("Tentukan metode penyelesaian SPL!");
