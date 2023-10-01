@@ -175,4 +175,29 @@ public class SPL {
         }
         return out;
     }
+
+    public String[] SPLInvers(Matrix M){
+    // Prekondisi: Matrix M memiliki invers
+        Matrix koef = new Matrix(M.getRow(),M.getRow());
+        Matrix kons = new Matriks(M.getRow(),1);
+        for(int i = 0; i < M.getRow(); i++){
+            for(int j = 0; j < M.getCol()-1 ; j++){
+                koef.mem[i][j] = M.mem[i][j];
+            }
+        }
+        for(int k = 0; k < M.getRow(), k++){
+            kons.mem[k][0] = M.mem[k][M.getCol()-1];
+        }
+        Matrix hasil = new Matrix(M.getRow(),1);
+        Invers inv = new Invers();
+        hasil = hasil.kali(inv.Invers(koef),kons);
+        String[3*hasil.getRow()] str;
+        for(int a = 0; a < M.hasil(); a++){
+            String char = null;
+            str[3*a] = Character.toString((char) a+97);
+            str[3*a+1] = "=";
+            str[3*a+2] = Double.toString(hasil.mem[a][0]);
+        }
+        return str;
+    }
 }

@@ -21,6 +21,7 @@ public class Invers {
 
             }
         }
+        return m;
     }
 
     public Matrix setUpInvers(Matrix m) {
