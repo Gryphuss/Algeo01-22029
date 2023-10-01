@@ -4,6 +4,7 @@ import IO.*;
 import java.util.Scanner;
 
 public class Bicubic{
+    Matrix xy = new Matrix(1,2);
 
     // Fungsi-fungsi untuk membuatt matrix X
     public static int f(int x, int y, int i, int j){
@@ -39,7 +40,7 @@ public class Bicubic{
         double x,y;
         // menentukan jenis input
         if(IOput.inputMode() == 1){
-            IOput.readFileToMatrixBicubic(m, m);
+            IOput.readFileToMatrixBicubic(m);
         }else{
             IOput.readKeyboardToMatrix(m);
             Scanner obj = new Scanner(System.in);

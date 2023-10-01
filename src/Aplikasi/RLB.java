@@ -46,7 +46,8 @@ public class RLB {
         roww = obj.nextInt();
 
         Matrix mat = new Matrix(roww, coll+1);
-        double[] testCase = new double[coll]; 
+        Matrix testCase = new Matrix(1,coll);
+
 
         if(IOput.inputMode()==1){
             IOput.readFileToMatrixRegresi(mat, testCase);
@@ -56,7 +57,7 @@ public class RLB {
             IOput.readKeyboardToMatrix(mat);
             System.out.println("Masukkan nilai variabel peubah yang ingin ditaksir nilai y, tiap nilai variabel dipisah dengan spasi");
             for(int i=0;i<coll;i++){
-                testCase[i] = obj.nextDouble();
+                testCase.mem[0][i] = obj.nextDouble();
             }
         }
 
@@ -71,7 +72,7 @@ public class RLB {
         System.out.print("Hasil dari taksiran nya adalah\ny = ");
         double nilaiY = solusi[0];
         for(int i=1;i<=coll;i++){
-            nilaiY += testCase[i-1]*solusi[i];
+            nilaiY += testCase.mem[0][i-1]*solusi[i];
         }
         System.out.println(IOput.df.format(nilaiY)+"\n");
 
