@@ -38,7 +38,7 @@ public class IOput{
         String nameFile = scanFile.nextLine();
         try {
             // proses membaca file dan mengisi matrix 
-            File file = new File(nameFile);
+            File file = new File("../test/"+nameFile);
             Scanner readFile = new Scanner(file);
             int i,j;
             i = 0;
@@ -76,7 +76,7 @@ public class IOput{
         System.out.print("Masukkan nama file yang diinginkan: ");
         nameFile = scanFile.nextLine();
         try {
-            File file = new File(nameFile);
+            File file = new File("../test/"+nameFile);
             Scanner readFile = new Scanner(file);
             int i, j;
             i = 0;
@@ -123,7 +123,7 @@ public class IOput{
         String nameFile = scanFile.nextLine();
         try {
             // proses membaca file dan mengisi matrix
-            File file = new File(nameFile);
+            File file = new File("../test/"+nameFile);
             Scanner readFile = new Scanner(file);
             int i,j;
             i = 0;
@@ -167,7 +167,7 @@ public class IOput{
         String nameFile = scanFile.nextLine();
         try {
             // proses membaca file dan mengisi matrix
-            File file = new File(nameFile);
+            File file = new File("../test/"+nameFile);
             Scanner readFile = new Scanner(file);
             int i,j;
             i = 0;
@@ -229,11 +229,11 @@ public class IOput{
         String nameFile = scanFile.nextLine();
 
         try {
-            File file = new File(nameFile);
+            File file = new File("../test/"+nameFile);
             // membuat file jika tidak ada
             file.createNewFile();
             // proses menulis matrix dalam file
-            FileWriter cc = new FileWriter(nameFile);
+            FileWriter cc = new FileWriter("../test/"+nameFile);
             for(int i = 0; i<m.getRow(); i++){
                 for(int j = 0; j<m.getCol(); j++){
                     String num = Double.toString(m.mem[i][j]);
@@ -260,11 +260,11 @@ public class IOput{
         String nameFile = scanFile.nextLine();
 
         try {
-            File file = new File(nameFile);
+            File file = new File("../test/"+nameFile);
             // membuat file jika tidak ada
             file.createNewFile();
             // proses menulis file
-            FileWriter cc = new FileWriter(nameFile);
+            FileWriter cc = new FileWriter("../test/"+nameFile);
             for(int i = 0; i<m.getRow(); i++){
                 for(int j = 0; j<m.getCol(); j++){
                     String num = Double.toString(m.mem[i][j]);
