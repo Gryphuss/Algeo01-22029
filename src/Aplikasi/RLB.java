@@ -8,19 +8,23 @@ public class RLB {
         // Matrix m, row adalah jmlh sampel, col adalah jmlh peubah
         Matrix eqMLR = new Matrix(m.getCol(), m.getCol()+1);
         // Tiap kolom i dikali x(i-1)
-        for(int i=0;i<eqMLR.getRow();i++){
-            Arrays.fill(eqMLR.mem[i],0);
-        }
+        m = m.transpose();
+        for (int i = 0; i < eqMLR.getRow(); i++) {
+            for (int j = 0; j < eqMLR.getCol(); j++) {
+                if (i == 0) {
+                    if (j == 0) {
+                        eqMLR.mem[i][j] = m.getCol();
+                    } else {
+                        eqMLR.mem[i][j] = eqMLR.sigmaSampel(m, m.getCol(), i, j);
+                    }
+                } else {
+                    if (j == 0) {
+                        eqMLR.mem[i][j] = eqMLR.mem[j][i];
+                    } else {
+                        eqMLR.mem[i][j] = eqMLR.sigmaSampel(m, m.getCol(), i, j);
+                    }
+                }
 
-        for(int i=0;i<eqMLR.getRow();i++){
-            for(int j=0;j<eqMLR.getCol();i++){
-                //Ketika column = 0, dikali 1
-                double multipI=1,multipJ=1;
-                for(int k=0;k<m.getRow();k++){
-                    if(i!=0) multipI = m.mem[k][i-1];
-                    if(j!=0) multipJ = m.mem[k][j-1];
-                    eqMLR.mem[j][i] += multipI*multipJ;
-                }    
             }
         }
         String[] solusiString = SPL.SPLGauss(eqMLR);
@@ -45,7 +49,7 @@ public class RLB {
         double[] testCase = new double[coll]; 
 
         if(IOput.inputMode()==1){
-            IOput.readFileToMatrix(mat);
+            IOput.readFileToMatrixRegresi(mat, testCase);
         }else{
             System.out.println("Masukkan nilai variabel-variabel peubah dan nilai y tiap sampel, dengan tiap sampel dipisahkan oleh enter. Formatnya sebagai berikut.");
             System.out.println("x11 x21 x31 .... xk1 y1\nx12 x22 x32 .... xk2 y2\n....\nx1i x2i x3i .... xki yi");
@@ -60,7 +64,7 @@ public class RLB {
         String fungsi = "f(x) = "+String.valueOf(solusi[0]);
         for(int i=1;i<=coll;i++){
             if(solusi[i]>0) fungsi += "+";
-            fungsi += String.valueOf(solusi[i])+"x"+String.valueOf(i);
+            fungsi += String.valueOf(IOput.df.format(solusi[i]))+"x"+String.valueOf(i);
         }
         
         System.out.println("Persamaan regresinya adalah "+fungsi);
@@ -69,7 +73,7 @@ public class RLB {
         for(int i=1;i<=coll;i++){
             nilaiY += testCase[i-1]*solusi[i];
         }
-        System.out.println(nilaiY+"\n");
+        System.out.println(IOput.df.format(nilaiY)+"\n");
 
     }
 

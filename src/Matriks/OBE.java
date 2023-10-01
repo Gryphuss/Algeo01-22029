@@ -1,7 +1,5 @@
 package Matriks;
 
-import java.util.*;
-
 public class OBE {
     public static void Gauss(Matrix m) {
 

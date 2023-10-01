@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
+
 import Matriks.*;
 
 public class IOput{
@@ -156,7 +158,7 @@ public class IOput{
         }
     }
 
-    public static void readFileToMatrixRegresi(Matrix mm, int[] x){
+    public static void readFileToMatrixRegresi(Matrix mm, double[] x){
     // Fungsi: membaca matrix dari file
     // sekaligus membaca nilai x0-xn untuk mencari nilai f(x0,...,xn)
         // membaca namafile
@@ -199,43 +201,6 @@ public class IOput{
             e.printStackTrace();
         }
     }
-
-    /*public static void readFileToMatrixBicubic(Matrix mm, int x, int y){
-        Scanner scanFile = new Scanner(System.in);
-        String nameFile = scanFile.nextLine();
-        try {
-            File file = new File(nameFile);
-            Scanner readFile = new Scanner(file);
-            int i,j;
-            i = 0;
-            j = 0;
-            mm.setRow(1);
-            mm.setCol(1);
-            while (readFile.hasNext()) {
-                String cc = readFile.nextLine();
-                String[] mString = cc.split("\n");
-                for(String num : mString){
-                    String [] mmString = num.split(" ");
-                    for(String numnum : mmString){
-                        double f = Double.parseDouble(numnum);
-                        mm.mem[i][j] = f;
-                        j++;
-                    }
-                    mm.setCol(j);
-                    j = 0;
-                    i++;
-                }
-                mm.setRow(i); 
-            }
-            x = mm.mem[i-1][0];
-            y = mm.mem[i-1][1];
-            mm.setRow(i-1); 
-            readFile.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Error");
-            e.printStackTrace();
-        }
-    }*/
 
     public static void readKeyboardToMatrix(Matrix m){
     // Fungsi: membaca matrix dari input keyboard
@@ -314,4 +279,6 @@ public class IOput{
             e.printStackTrace();
         }
     }
+
+    public static final DecimalFormat df = new DecimalFormat("0.00000");
 }

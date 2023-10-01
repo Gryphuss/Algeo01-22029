@@ -1,21 +1,21 @@
 package Aplikasi;
 import Matriks.*;
-import IOput.*;
+import IO.*;
 import java.util.Scanner;
 
 public class Bicubic{
 
     // Fungsi-fungsi untuk membuatt matrix X
-    public int f(int x, int y, int i, int j){
+    public static int f(int x, int y, int i, int j){
         return ((int)Math.pow(x,i) * (int)Math.pow(y,j));
     }
-    public int fx(int x, int y, int i, int j){
+    public static int fx(int x, int y, int i, int j){
         return (i * (int)Math.pow(x,i-1) * (int)Math.pow(y,j));
     }
-    public int fy(int x, int y, int i, int j){
+    public static int fy(int x, int y, int i, int j){
         return (j * (int)Math.pow(x,i) * (int)Math.pow(y,j-1));
     }
-    public int fxy(int x, int y, int i, int j){
+    public static int fxy(int x, int y, int i, int j){
         return (i * j * (int)Math.pow(x,i-1) * (int)Math.pow(y,j-1));
     }
 
@@ -27,28 +27,29 @@ public class Bicubic{
         idx = 0;
         for(int i = 0; i < m.getRow(); i++){
             for(int j = 0; j < m.getCol(); j++){
-                mBaru.mem[idx] = m.mem[i][j];
+                mBaru.mem[idx][0] = m.mem[i][j];
                 idx ++;
             }
         }
+        return mBaru;
     }
 
     public static void bicubic(Matrix m){
     // Fungsi: menampilkan nilai f(x,y) hasil bicubic
         double x,y;
         // menentukan jenis input
-        if(inputMode() == 1){
-            readFileToMatrixBicubic(m);
+        if(IOput.inputMode() == 1){
+            IOput.readFileToMatrixBicubic(m, m);
         }else{
-            readKeyboardToMatrix(m);
-            Scanner obj = new Scanner();
+            IOput.readKeyboardToMatrix(m);
+            Scanner obj = new Scanner(System.in);
             x = obj.nextDouble();
             y = obj.nextDouble();
         }
         // proses menghitung f(x,y)
         m = setBicubic(m);
         Matrix mx = new Matrix(0,0);
-        mx = buatX;
+        mx = buatX();
         double f;
         f = bicubicInterpolation(x,y,mx,m); 
         // output

@@ -1,26 +1,25 @@
 package Matriks;
 import IO.IOput;
-import java.util.Scanner;
 
 public class Invers {
 
-    public Matriks invers(Matrix m) {
+    public static Matrix invers(Matrix m) {
     // Fungsi: menghasilkan matrix invers dari m
         // mensetup matrix
-        m = m.setUpInvers(m);
+        m = setUpInvers(m);
         // menginvers matrix
-        m = m.GaussJordan(m)
+        OBE.GaussJordan(m);
         // mengambil matrix invers
-        m = m.takeInversInvers(m);
+        m = takeInvers(m);
 
         if(IOput.inputMode() == 1){
-            writeMatrix(m);
+            IOput.writeMatrixToFile(m);
         } else {
             // menampilkan hasil invers
             System.out.println("Matriks balikan dari matrix awal:\n");
             for (int i = 0; i < m.getRow(); i++) {
                 for (int j = 0; j < m.getCol(); j++) {
-                    System.out.print(m[i][j]);
+                    System.out.print(m.mem[i][j]);
                     System.out.print(" ");
                 }
                 System.out.print("\n");
@@ -31,7 +30,7 @@ public class Invers {
         return m;
     }
 
-    public Matrix setUpInvers(Matrix m) {
+    public static Matrix setUpInvers(Matrix m) {
     // Fungsi: mensetup matrix invers dengan cara
     // menambahkan matrix identitas di sebelah matrix m
         // proses menambahkan matrix identitas
@@ -49,7 +48,7 @@ public class Invers {
         return mI;
     }
 
-    public Matrix takeInvers(Matrix m) {
+    public static Matrix takeInvers(Matrix m) {
     // Fungsi: mengambil matrix invers dari matrix setup invers
     // yaitu mengambil matrix yang awalnya berisi identitas
         Matrix mI = new Matrix(m.getRow(), m.getRow());

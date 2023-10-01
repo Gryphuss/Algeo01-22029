@@ -1,5 +1,7 @@
 package Aplikasi;
 import java.util.*;
+
+import IO.IOput;
 import Matriks.*;
 
 public class SPL {
@@ -176,28 +178,81 @@ public class SPL {
         return out;
     }
 
-    public String[] SPLInvers(Matrix M){
+    public static String[] SPLInvers(Matrix M){
     // Prekondisi: Matrix M memiliki invers
         Matrix koef = new Matrix(M.getRow(),M.getRow());
-        Matrix kons = new Matriks(M.getRow(),1);
+        Matrix kons = new Matrix(M.getRow(),1);
         for(int i = 0; i < M.getRow(); i++){
             for(int j = 0; j < M.getCol()-1 ; j++){
                 koef.mem[i][j] = M.mem[i][j];
             }
         }
-        for(int k = 0; k < M.getRow(), k++){
+        for(int k = 0; k < M.getRow(); k++){
             kons.mem[k][0] = M.mem[k][M.getCol()-1];
         }
         Matrix hasil = new Matrix(M.getRow(),1);
-        Invers inv = new Invers();
-        hasil = hasil.kali(inv.Invers(koef),kons);
-        String[3*hasil.getRow()] str;
-        for(int a = 0; a < M.hasil(); a++){
-            String char = null;
+        hasil = hasil.kali(Invers.invers(koef),kons);
+        String[] str = new String[3*hasil.getRow()];
+        for(int a = 0; a < hasil.getCol(); a++){
             str[3*a] = Character.toString((char) a+97);
             str[3*a+1] = "=";
             str[3*a+2] = Double.toString(hasil.mem[a][0]);
         }
         return str;
+    }
+
+    public static void menuSPL(){
+        Scanner obj = new Scanner(System.in);
+        System.out.println("Tentukan metode penyelesaian SPL!");
+        System.out.println("1. Metode Eliminasi Gauss\n2. Metode Eliminasi Gauss-Jordan\n3. Metode Matriks Balikan\n4. Kaidah Cramer");
+        System.out.print("-> ");
+        int menu = obj.nextInt();
+        while(menu!=1&&menu!=2&&menu!=3&&menu!=4){
+            System.out.print("Pilihan hanya antara 1,2,3 atau 4!\n-> ");
+            menu = obj.nextInt();
+        }
+        int roww,byk_x;
+        System.out.print("Masuukkan banyak persamaan: ");
+        roww = obj.nextInt();
+        System.out.print("Masukkan jumlah variabel peubah: ");
+        byk_x = obj.nextInt();
+
+        Matrix mat = new Matrix(roww, byk_x+1);
+        if(IOput.inputMode()==1){
+            IOput.readFileToMatrix(mat);
+        }else{
+            for(int i=0;i<roww;i++){
+                for(int j=0;j<byk_x;j++){
+                    System.out.print("\nMasukkan koefisien a("+(i+1)+","+(j+1)+"): ");
+                    mat.mem[i][j] = obj.nextDouble();               
+                }
+            }
+            for(int i=0;i<roww;i++){
+                System.out.print("Masukkan nilai b("+(i+1)+"): ");
+                mat.mem[i][mat.getCol()-1] = obj.nextDouble();
+            }
+        }
+        String[] solusi = new String[byk_x];
+        if(menu==1){
+            solusi = SPLGauss(mat);
+        }else if(menu==2){
+            solusi = SPLGaussJordan(mat);
+        }else if(menu==3){
+            solusi = SPLInvers(mat);
+        }else{
+            kaidahCrammer(mat);
+        }
+
+        if (menu!=4){
+            System.out.println("Solusi dari SPL tersebut adalah: ");
+            for(int i=0;i<byk_x;i++){
+                System.out.println("x"+String.valueOf(i+1)+" = "+solusi[i]);
+            }
+        }
+        System.out.println("Kembali ke Menu Utama.......");
+    }
+
+    public static void main(String[] args){
+        menuSPL();
     }
 }
