@@ -1,7 +1,7 @@
 package Aplikasi;
 import Matriks.*;
 import IO.*;
-import java.util.Scanner;
+import java.util.*;
 
 public class Bicubic{
 
@@ -127,9 +127,11 @@ public class Bicubic{
     public static double bicubicInterpolation(double x, double y, Matrix mIn, Matrix mX){
     // Fungsi: mencari nilai f(x,y) dengan bicubic
         // inisialisasi matrix mhasil
-        Matrix mhasil = new Matrix(16,1);
+        Matrix mhasil = new Matrix(0,0);
         // proses mengisi matrix mhasil
         mhasil = mhasil.kali(mX,mIn);
+        System.out.println("ini diproses");
+        
         // menghitung f(x,y)
         double hasil = 0;
         for(int i=0; i<4; i++){

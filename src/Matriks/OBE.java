@@ -79,7 +79,7 @@ public class OBE {
         }
         return det;
     }
-
+/* 
     public static void mainmenu() {
         System.out.println("DETERMINAN");
         System.out.println("Options: ");
@@ -187,5 +187,5 @@ public class OBE {
         if (!nonvalid) {
             System.out.print("Returning to Main Menu.. ");
         }
-    }
+    }*/
 }
