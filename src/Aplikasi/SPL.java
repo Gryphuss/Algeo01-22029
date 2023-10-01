@@ -185,14 +185,14 @@ public class SPL {
                 koef.mem[i][j] = M.mem[i][j];
             }
         }
-        for(int k = 0; k < M.getRow(), k++){
+        for(int k = 0; k < M.getRow(); k++){
             kons.mem[k][0] = M.mem[k][M.getCol()-1];
         }
         Matrix hasil = new Matrix(M.getRow(),1);
         Invers inv = new Invers();
         hasil = hasil.kali(inv.Invers(koef),kons);
         String[3*hasil.getRow()] str;
-        for(int a = 0; a < M.hasil(); a++){
+        for(int a = 0; a < hasil.getRow(); a++){
             String char = null;
             str[3*a] = Character.toString((char) a+97);
             str[3*a+1] = "=";
