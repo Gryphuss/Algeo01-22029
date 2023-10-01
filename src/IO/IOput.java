@@ -113,7 +113,7 @@ public class IOput{
         }
     }
 
-    public static void readFileToMatrixBicubic(Matrix mm, double x, double y){
+    public static void readFileToMatrixBicubic(Matrix mm, Matrix xy){
     // Fungsi: membaca matrix dari file
     // sekaligus membaca nilai x,y untuk mencari nilai f(x,y)
         // membaca namafile
@@ -145,8 +145,8 @@ public class IOput{
                 mm.setRow(i); 
             }
             // membaca nilai x,y
-            x = mm.mem[i-1][0];
-            y = mm.mem[i-1][1];
+            xy.mem[0][0] = mm.mem[i-1][0];
+            xy.mem[0][1] = mm.mem[i-1][1];
             mm.setRow(i-1); 
             readFile.close();
         } catch (FileNotFoundException e) {
