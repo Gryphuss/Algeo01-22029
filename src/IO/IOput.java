@@ -115,7 +115,7 @@ public class IOput{
         }
     }
 
-    public static void readFileToMatrixBicubic(Matrix mm){
+    public static void readFileToMatrixBicubic(Matrix mm, Matrix xy){
     // Fungsi: membaca matrix dari file
     // sekaligus membaca nilai x,y untuk mencari nilai f(x,y)
         // membaca namafile

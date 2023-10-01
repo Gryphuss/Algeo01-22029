@@ -4,7 +4,6 @@ import IO.*;
 import java.util.Scanner;
 
 public class Bicubic{
-    Matrix xy = new Matrix(1,2);
 
     // Fungsi-fungsi untuk membuatt matrix X
     public static int f(int x, int y, int i, int j){
@@ -35,20 +34,24 @@ public class Bicubic{
         return mBaru;
     }
 
-    public static void bicubic(Matrix m){
+    public static void bicubic(){
     // Fungsi: menampilkan nilai f(x,y) hasil bicubic
+        Matrix m = new Matrix(4,4);
+        Matrix xy = new Matrix(1,2);
         double x,y;
         // menentukan jenis input
         if(IOput.inputMode() == 1){
             IOput.readFileToMatrixBicubic(m);
-            x = this.xy.mem[0][0];
-            y = this.xy.mem[0][1];
+            x = xy.mem[0][0];
+            y = xy.mem[0][1];
         }else{
             IOput.readKeyboardToMatrix(m);
             Scanner obj = new Scanner(System.in);
-            x = obj.nextDouble();
-            y = obj.nextDouble();
+            xy.mem[0][0] = obj.nextDouble();
+            xy.mem[0][1] = obj.nextDouble();
         }
+        x = xy.mem[0][0];
+        y = xy.mem[0][1];
         // proses menghitung f(x,y)
         m = setBicubic(m);
         Matrix mx = new Matrix(0,0);
