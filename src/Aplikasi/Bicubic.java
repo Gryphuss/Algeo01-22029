@@ -36,26 +36,33 @@ public class Bicubic{
 
     public static void bicubic(){
     // Fungsi: menampilkan nilai f(x,y) hasil bicubic
-        Matrix m = new Matrix(4,4);
+        Matrix m = new Matrix(5,4);
         Matrix xy = new Matrix(1,2);
         double x,y;
         // menentukan jenis input
         if(IOput.inputMode() == 1){
             IOput.readFileToMatrixBicubic(m,xy);
-            x = xy.mem[0][0];
-            y = xy.mem[0][1];
+            m.displayMatrix();
         }else{
             IOput.readKeyboardToMatrix(m);
-            Scanner obj = new Scanner(System.in);
-            xy.mem[0][0] = obj.nextDouble();
-            xy.mem[0][1] = obj.nextDouble();
+            xy.mem[0][0] = m.mem[4][0];
+            xy.mem[0][1] = m.mem[4][1];
+            m.setRow(4);
+            m.displayMatrix();
         }
         x = xy.mem[0][0];
         y = xy.mem[0][1];
+        System.out.println(x);
+        System.out.println(y);
         // proses menghitung f(x,y)
         m = setBicubic(m);
+        m.displayMatrix();
         Matrix mx = new Matrix(0,0);
+
         mx = buatX();
+        mx.displayMatrix();
+        mx = Invers.invers(mx);
+        mx.displayMatrix();
         double f;
         f = bicubicInterpolation(x,y,mx,m); 
         // output
@@ -120,7 +127,7 @@ public class Bicubic{
     public static double bicubicInterpolation(double x, double y, Matrix mIn, Matrix mX){
     // Fungsi: mencari nilai f(x,y) dengan bicubic
         // inisialisasi matrix mhasil
-        Matrix mhasil = new Matrix(1,16);
+        Matrix mhasil = new Matrix(16,1);
         // proses mengisi matrix mhasil
         mhasil = mhasil.kali(mX,mIn);
         // menghitung f(x,y)

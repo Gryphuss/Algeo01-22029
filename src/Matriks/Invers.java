@@ -5,7 +5,7 @@ public class Invers {
 
     public static Matrix invers(Matrix m) {
     // Fungsi: menghasilkan matrix invers dari m
-        Matrix temp = new Matrix(m.getRow(),m.getCol());
+        //Matrix temp = new Matrix(m.getRow(),m.getCol());
         // mensetup matrix
         m = setUpInvers(m);
         // menginvers matrix
@@ -13,7 +13,7 @@ public class Invers {
         // mengambil matrix invers
         m = takeInvers(m);
 
-        if(IOput.inputMode() == 1){
+        /*if(IOput.inputMode() == 1){
             IOput.writeMatrixToFile(m);
         } else {
             // menampilkan hasil invers
@@ -26,7 +26,8 @@ public class Invers {
                 System.out.print("\n");
 
             }
-        }
+        }*/
+        return m;
     }
 
     public static Matrix setUpInvers(Matrix m) {
@@ -34,9 +35,9 @@ public class Invers {
     // menambahkan matrix identitas di sebelah matrix m
         // proses menambahkan matrix identitas
         Matrix mI = new Matrix(m.getRow(), 2 * m.getCol());
-        for (int i = 0; i < m.getRow(); i++) {
+                for (int i = 0; i < m.getRow(); i++) {
             for (int j = 0; j < m.getCol(); j++) {
-                mI.mem[i][j] = m.mem[i][j];
+mI.mem[i][j] = m.mem[i][j];
                 if (i == j) {
                     mI.mem[i][j + m.getCol()] = 1;
                 } else {
@@ -44,7 +45,7 @@ public class Invers {
                 }
             }
         }
-        return mI;
+return mI;
     }
 
     public static Matrix takeInvers(Matrix m) {
@@ -53,7 +54,7 @@ public class Invers {
         Matrix mI = new Matrix(m.getRow(), m.getRow());
         for (int i = 0; i < m.getRow(); i++) {
             for (int j = 0; j < m.getRow(); j++) {
-                mI.mem[i][j] = m.mem[i][j + m.getRow()];
+mI.mem[i][j] = m.mem[i][j + m.getRow()];
             }
         }
         return mI;

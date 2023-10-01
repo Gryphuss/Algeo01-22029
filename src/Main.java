@@ -39,7 +39,7 @@ public class Main {
             }else if(menu==4){
                 Interpolasi.mainMenu();
             }else if(menu==5){
-
+                Bicubic.bicubic();
             }else if(menu==6){
                 RLB.menuRLB();
             }else if(menu==7){

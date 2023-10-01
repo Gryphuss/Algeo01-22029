@@ -128,8 +128,8 @@ public class IOput{
             int i,j;
             i = 0;
             j = 0;
-            mm.setRow(1);
-            mm.setCol(1);
+            mm.setRow(5);
+            mm.setCol(4);
             while (readFile.hasNext()) {
                 String cc = readFile.nextLine();
                 String[] mString = cc.split("\n");
@@ -140,14 +140,11 @@ public class IOput{
                         mm.mem[i][j] = f;
                         j++;
                     }
-                    mm.setCol(j);
                     j = 0;
                     i++;
                 }
-                mm.setRow(i); 
             }
             // membaca nilai x,y
-            Bicubic bi = new Bicubic();
             xy.mem[0][0] = mm.mem[i-1][0];
             xy.mem[0][1] = mm.mem[i-1][1];
             mm.setRow(i-1); 
