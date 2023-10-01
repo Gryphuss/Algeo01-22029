@@ -194,7 +194,7 @@ public class SPL {
         Matrix hasil = new Matrix(M.getRow(),1);
         hasil = hasil.kali(Invers.invers(koef),kons);
         String[] str = new String[3*hasil.getRow()];
-        for(int a = 0; a < hasil.getCol(); a++){
+        for(int a = 0; a < hasil.getRow(); a++){
             str[3*a] = Character.toString((char) a+97);
             str[3*a+1] = "=";
             str[3*a+2] = Double.toString(hasil.mem[a][0]);
