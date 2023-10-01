@@ -41,6 +41,8 @@ public class Bicubic{
         // menentukan jenis input
         if(IOput.inputMode() == 1){
             IOput.readFileToMatrixBicubic(m);
+            x = this.xy.mem[0][0];
+            y = this.xy.mem[0][1];
         }else{
             IOput.readKeyboardToMatrix(m);
             Scanner obj = new Scanner(System.in);
