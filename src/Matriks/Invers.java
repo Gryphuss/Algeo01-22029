@@ -4,22 +4,23 @@ import java.util.Scanner;
 
 public class Invers {
 
-    public Matriks invers(Matrix m) {
+    public void invers(Matrix m) {
     // Fungsi: menghasilkan matrix invers dari m
+        Matrix temp = new Matrix(m.getRow(),m.getCol());
         // mensetup matrix
-        m = m.setUpInvers(m);
+        temp = setUpInvers(m);
         // menginvers matrix
-        m = m.GaussJordan(m)
+        temp = GaussJordan(temp);
         // mengambil matrix invers
-        m = m.takeInversInvers(m);
+        temp = takeInversInvers(temp);
 
         if(IOput.inputMode() == 1){
-            writeMatrix(m);
+            writeMatrixToFile(temp);
         } else {
             // menampilkan hasil invers
             System.out.println("Matriks balikan dari matrix awal:\n");
-            for (int i = 0; i < m.getRow(); i++) {
-                for (int j = 0; j < m.getCol(); j++) {
+            for (int i = 0; i < temp.getRow(); i++) {
+                for (int j = 0; j < temp.getCol(); j++) {
                     System.out.print(m[i][j]);
                     System.out.print(" ");
                 }
@@ -27,11 +28,9 @@ public class Invers {
 
             }
         }
-        // output
-        return m;
     }
 
-    public Matrix setUpInvers(Matrix m) {
+    public static Matrix setUpInvers(Matrix m) {
     // Fungsi: mensetup matrix invers dengan cara
     // menambahkan matrix identitas di sebelah matrix m
         // proses menambahkan matrix identitas
@@ -49,7 +48,7 @@ public class Invers {
         return mI;
     }
 
-    public Matrix takeInvers(Matrix m) {
+    public static Matrix takeInvers(Matrix m) {
     // Fungsi: mengambil matrix invers dari matrix setup invers
     // yaitu mengambil matrix yang awalnya berisi identitas
         Matrix mI = new Matrix(m.getRow(), m.getRow());
