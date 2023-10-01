@@ -156,7 +156,7 @@ public class IOput{
         }
     }
 
-    public static void readFileToMatrixRegresi(Matrix mm, int[] x){
+    public static void readFileToMatrixRegresi(Matrix mm, Matrix x){
     // Fungsi: membaca matrix dari file
     // sekaligus membaca nilai x0-xn untuk mencari nilai f(x0,...,xn)
         // membaca namafile
@@ -189,7 +189,7 @@ public class IOput{
             }
             // membaca x0-xn
             for(int k = 0; k < mm.getCol(); k++){
-                x[k] = mm.mem[i-1][k];
+                x.mem[0][k] = mm.mem[i-1][k];
             }
             mm.setRow(i-1); 
             readFile.close();
