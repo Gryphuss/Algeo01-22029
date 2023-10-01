@@ -67,43 +67,47 @@ public class IOput{
         }
     }
 
-    public static void readFileToMatrixInterpolasi(Matrix mm, double x){
-    // Fungsi: membaca matrix dari file
-    // sekaligus membaca nilai x untuk mencari f(x)
-        // membaca nama file
+    public static void readFileToMatrixInterpolasi(Matrix mm, Matrix x) {
         Scanner scanFile = new Scanner(System.in);
-        String nameFile = scanFile.nextLine();
+        String nameFile = new String();
+        // scanFile.nextLine();
+        System.out.print("Masukkan nama file yang diinginkan: ");
+        nameFile = scanFile.nextLine();
         try {
-            // proses mengisi matrix
             File file = new File(nameFile);
             Scanner readFile = new Scanner(file);
-            int i,j;
+            int i, j;
             i = 0;
             j = 0;
             mm.setRow(1);
-            mm.setCol(1);
+            mm.setCol(2);
             while (readFile.hasNext()) {
                 String cc = readFile.nextLine();
                 String[] mString = cc.split("\n");
-                for(String num : mString){
-                    String [] mmString = num.split(" ");
-                    for(String numnum : mmString){
+                for (String num : mString) {
+                    String[] mmString = num.split(" ");
+                    for (String numnum : mmString) {
                         double f = Double.parseDouble(numnum);
+                        // System.out.println("pass");
+                        // System.out.println(numnum);
                         mm.mem[i][j] = f;
+                        // System.out.println(j);
                         j++;
                     }
-                    mm.setCol(j);
+                    // mm.setCol(j);
                     j = 0;
                     i++;
                 }
-                mm.setRow(i); 
+                mm.setRow(i);
             }
-            // membaca nilai x
-            x = mm.mem[i-1][0];
-            mm.setRow(i-1); 
+            // mm.displayMatrix();
+            x.mem[0][0] = mm.mem[mm.getRow() - 1][0];
+            // System.out.println(x);
+            mm.setRow(i - 1);
+            // mm.displayMatrix();
+            // System.out.println("----");
             readFile.close();
         } catch (FileNotFoundException e) {
-            // kasus error
             System.out.println("Error");
             e.printStackTrace();
         }
