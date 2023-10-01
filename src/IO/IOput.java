@@ -158,7 +158,7 @@ public class IOput{
         }
     }
 
-    public static void readFileToMatrixRegresi(Matrix mm, double[] x){
+    public static void readFileToMatrixRegresi(Matrix mm, Matrix x){
     // Fungsi: membaca matrix dari file
     // sekaligus membaca nilai x0-xn untuk mencari nilai f(x0,...,xn)
         // membaca namafile
