@@ -34,7 +34,7 @@ public class Bicubic{
         return mBaru;
     }
 
-    public static void bicubic(){
+    public static void menubicubic(){
     // Fungsi: menampilkan nilai f(x,y) hasil bicubic
         Matrix m = new Matrix(5,4);
         Matrix xy = new Matrix(1,2);
