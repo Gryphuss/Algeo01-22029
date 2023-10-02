@@ -64,7 +64,7 @@ public class Bicubic{
         mx = Invers.invers(mx);
         mx.displayMatrix();
         double f;
-        f = bicubicInterpolation(x,y,mx,m); 
+        f = bicubicInterpolation(x,y,m,mx); 
         // output
         System.out.println(f);
 
@@ -130,6 +130,7 @@ public class Bicubic{
         Matrix mhasil = new Matrix(0,0);
         // proses mengisi matrix mhasil
         mhasil = mhasil.kali(mX,mIn);
+        mhasil.displayMatrix();
         System.out.println("ini diproses");
         
         // menghitung f(x,y)
