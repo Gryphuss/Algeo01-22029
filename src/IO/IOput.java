@@ -34,6 +34,7 @@ public class IOput{
     public static void readFileToMatrix(Matrix mm){
     // Fungsi: membaca matrix dari file
         // membaca nama file
+        System.out.println("Masukkan Nama File:");
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
         try {
@@ -70,6 +71,7 @@ public class IOput{
     }
 
     public static void readFileToMatrixInterpolasi(Matrix mm, Matrix x) {
+        System.out.println("Masukkan Nama File:");
         Scanner scanFile = new Scanner(System.in);
         String nameFile = new String();
         // scanFile.nextLine();
@@ -119,6 +121,7 @@ public class IOput{
     // Fungsi: membaca matrix dari file
     // sekaligus membaca nilai x,y untuk mencari nilai f(x,y)
         // membaca namafile
+        System.out.println("Masukkan Nama File:");
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
         try {
@@ -160,6 +163,7 @@ public class IOput{
     // Fungsi: membaca matrix dari file
     // sekaligus membaca nilai x0-xn untuk mencari nilai f(x0,...,xn)
         // membaca namafile
+        System.out.println("Masukkan Nama File:");
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
         try {
@@ -222,6 +226,7 @@ public class IOput{
     // Fungsi: menulis matrix ke suatu file
     // sekaligus menulis string tambahan untuk suatu keterangan
         // membaca nama file
+        System.out.println("Masukkan Nama File:");
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
 
@@ -253,6 +258,7 @@ public class IOput{
     public static void writeMatrixToFile(Matrix m){
     // Fungsi: menulis matrix ke suatu file
         // membaca nama file
+        System.out.println("Masukkan Nama File:");
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
 
