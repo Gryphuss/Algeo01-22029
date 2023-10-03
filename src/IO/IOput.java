@@ -31,6 +31,28 @@ public class IOput{
         return n;
     }
 
+    public static int outputMode(){
+    // Fungsi: untuk menentukan output yang diinginkan
+    // output melalui terminal atau melalui file .txt
+        int n;
+        Scanner obj = new Scanner(System.in);
+        // Pertanyaan kepada user
+        System.out.println("Tentukan metode output!");
+        System.out.println("1. Penulisan ke File");
+        System.out.println("2. Penulisan k Keyboard");
+        // memastikan input user benar
+        while(true){
+            n = obj.nextInt();
+            if(n!=1 && n!=2){
+                System.out.println("Pilihan hanya antara 1 atau 2!");
+            }else{
+                break;
+            }
+        }
+        // hasil
+        return n;
+    }
+
     public static void readFileToMatrix(Matrix mm){
     // Fungsi: membaca matrix dari file
         // membaca nama file
@@ -275,6 +297,54 @@ public class IOput{
                     cc.write(" ");
                 }
                 cc.write("\n");
+            }
+            cc.close();
+        } catch (IOException e) {
+            // kasus error
+            System.out.println("Error");
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeStringToFile(String str){
+    // Fungsi: menulis matrix ke suatu file
+        // membaca nama file
+        System.out.println("Masukkan Nama File:");
+        Scanner scanFile = new Scanner(System.in);
+        String nameFile = scanFile.nextLine();
+
+        try {
+            File file = new File("../test/"+nameFile);
+            // membuat file jika tidak ada
+            file.createNewFile();
+            // proses menulis file
+            FileWriter cc = new FileWriter("../test/"+nameFile);
+            cc.write(str);
+            cc.write("\n");
+            cc.close();
+        } catch (IOException e) {
+            // kasus error
+            System.out.println("Error");
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeArrayStringToFile(String[] listStr){
+    // Fungsi: menulis matrix ke suatu file
+        // membaca nama file
+        System.out.println("Masukkan Nama File:");
+        Scanner scanFile = new Scanner(System.in);
+        String nameFile = scanFile.nextLine();
+
+        try {
+            File file = new File("../test/"+nameFile);
+            // membuat file jika tidak ada
+            file.createNewFile();
+            // proses menulis file
+            FileWriter cc = new FileWriter("../test/"+nameFile);
+            for(String kata : listStr){
+                cc.write(kata);
+                cc.write("\n");  
             }
             cc.close();
         } catch (IOException e) {

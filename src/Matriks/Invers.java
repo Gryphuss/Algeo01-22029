@@ -1,7 +1,44 @@
 package Matriks;
+import java.util.Scanner;
+
 import IO.IOput;
 
 public class Invers {
+    public static void menuInvers(){
+    // Fungsi: menghasilkan matrix invers dari m
+        
+        Scanner obj = new Scanner(System.in);
+        System.out.println("Masukan Ukuran Matrix Persegi:");
+        int n = obj.nextInt();
+        Matrix m = new Matrix(n, n);
+        if(IOput.inputMode() == 1){
+            IOput.readFileToMatrix(m);
+
+        }else{
+            IOput.readKeyboardToMatrix(m);
+        }
+        // mensetup matrix
+        m = setUpInvers(m);
+        // menginvers matrix
+        OBE.GaussJordan(m);
+        // mengambil matrix invers
+        m = takeInvers(m);
+
+        if(false){
+            IOput.writeMatrixToFile(m);
+        } else {
+            // menampilkan hasil invers
+            System.out.println("Matriks balikan dari matrix awal:\n");
+            for (int i = 0; i < m.getRow(); i++) {
+                for (int j = 0; j < m.getCol(); j++) {
+                    System.out.print(m.mem[i][j]);
+                    System.out.print(" ");
+                }
+                System.out.print("\n");
+
+            }
+        }
+    }
 
     public static Matrix invers(Matrix m) {
     // Fungsi: menghasilkan matrix invers dari m

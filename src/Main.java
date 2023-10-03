@@ -35,7 +35,7 @@ public class Main {
             }else if(menu==2){
 
             }else if(menu==3){
-
+                Invers.menuInvers();
             }else if(menu==4){
                 Interpolasi.mainMenu();
             }else if(menu==5){
