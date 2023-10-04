@@ -82,7 +82,7 @@ public class RLB {
         }else{
             System.out.print(solusiString);
         }
-        System.out.println("Kembali ke Menu Utama.....");
+        System.out.println("Kembali ke Menu Utama.....\n");
     }
 
     public static void main(String[] args){

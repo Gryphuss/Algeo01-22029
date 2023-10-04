@@ -252,7 +252,7 @@ public class SPL {
         }
 
         if(menu!=4){
-            if (!cekAllArray(solusi, "")){
+            if(!cekAllArray(solusi, "")){
                 solusiString="Solusi dari SPL tersebut adalah: \n";
                 for(int i=0;i<byk_x;i++){
                     solusiString+="x"+String.valueOf(i+1)+" = "+solusi[i]+"\n";
@@ -267,7 +267,7 @@ public class SPL {
         }else{
             System.out.print(solusiString);
         }
-        System.out.println("Kembali ke Menu Utama.......");
+        System.out.println("Kembali ke Menu Utama.......\n");
     }
 
     public static void main(String[] args){

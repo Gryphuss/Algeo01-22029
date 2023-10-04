@@ -13,11 +13,10 @@ public class Main {
         System.out.println("4. Interpolasi Polinom");
         System.out.println("5. Interpolasi Bicubic Spline");
         System.out.println("6. Regresi Linear Berganda");
-        System.out.println("7. Scalling Image");
-        System.out.println("8. Keluar Kalkulator");
+        System.out.println("7. Keluar Kalkulator");
         System.out.print("->");
         int pilihan = obj.nextInt();
-        while(pilihan<1 || pilihan>8){
+        while(pilihan<1 || pilihan>7){
             System.out.println("Input tidak sesuai! Silahkan coba lagi.");
             System.out.print("->");
             pilihan = obj.nextInt();
@@ -33,7 +32,7 @@ public class Main {
             if(menu==1){
                 SPL.menuSPL();
             }else if(menu==2){
-
+                OBE.mainmenu();
             }else if(menu==3){
                 Invers.menuInvers();
             }else if(menu==4){
@@ -42,8 +41,6 @@ public class Main {
                 Bicubic.menubicubic();
             }else if(menu==6){
                 RLB.menuRLB();
-            }else if(menu==7){
-
             }else{
                 System.out.println("Terima Kasih Telah Menggunakan Layanan");
                 System.out.println("--------Kalkulator BEAULO------------");
