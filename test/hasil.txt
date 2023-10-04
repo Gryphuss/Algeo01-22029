@@ -1,0 +1,1 @@
+Polinom yang melalui titik-titik tersebut adalah: f(x) = -0.0230 + 0.2400x + 0.1974x^2 + 0.0000x^3 + 0.0260x^4 + 0.0000x^5 - 0.0000x^6 dan nilai y dari nilai x yang diinginkan adalah: f(0.2) = 0.0330
