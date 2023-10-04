@@ -179,23 +179,38 @@ public class SPL {
 
     public static String[] SPLInvers(Matrix M){
     // Prekondisi: Matrix M memiliki invers
-        Matrix koef = new Matrix(M.getRow(),M.getRow());
-        Matrix kons = new Matrix(M.getRow(),1);
-        for(int i = 0; i < M.getRow(); i++){
-            for(int j = 0; j < M.getCol()-1 ; j++){
-                koef.mem[i][j] = M.mem[i][j];
+    String[] str = new String[M.getRow()];
+    for(int i = 0; i < M.getCol()-1; i++){
+        str[i] = "";
+    }
+    if(M.isSquare() == false){
+        System.out.println("Matriks tidak memiliki balikan sehingga solusi SPL tidak bisa diselesaikan");
+    }else{
+        if(OBE.determinanKofaktor(M) == 0){
+            System.out.println("Matriks tidak memiliki balikan sehingga solusi SPL tidak bisa diselesaikan");
+        }else{
+            Matrix koef = new Matrix(M.getRow(),M.getRow());
+            Matrix kons = new Matrix(M.getRow(),1);
+            for(int i = 0; i < M.getRow(); i++){
+                for(int j = 0; j < M.getCol()-1 ; j++){
+                    koef.mem[i][j] = M.mem[i][j];
+                }
+            }
+    
+            for(int k = 0; k < M.getRow(); k++){
+                kons.mem[k][0] = M.mem[k][M.getCol()-1];
+            }
+    
+            Matrix hasil = new Matrix(M.getRow(),1);
+            hasil = hasil.kali(Invers.invers(koef),kons);
+            
+    
+            //String[] str = new String[hasil.getRow()];
+            for(int a = 0; a < hasil.getRow(); a++){
+                str[a] = Double.toString(hasil.mem[a][0]);
             }
         }
-
-        for(int k = 0; k < M.getRow(); k++){
-            kons.mem[k][0] = M.mem[k][M.getCol()-1];
-        }
-        Matrix hasil = new Matrix(M.getRow(),1);
-        hasil = hasil.kali(Invers.invers(koef),kons);
-        String[] str = new String[hasil.getRow()];
-        for(int a = 0; a < hasil.getRow(); a++){
-            str[a] = Double.toString(hasil.mem[a][0]);
-        }
+    }
         return str;
     }
     
