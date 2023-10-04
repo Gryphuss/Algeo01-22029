@@ -56,7 +56,7 @@ public class IOput{
     public static void readFileToMatrix(Matrix mm){
     // Fungsi: membaca matrix dari file
         // membaca nama file
-        System.out.println("Masukkan Nama File:");
+        System.out.print("Masukkan Nama File:");
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
         try {

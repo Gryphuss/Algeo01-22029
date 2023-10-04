@@ -1,6 +1,5 @@
 package Aplikasi;
 import java.util.*;
-
 import IO.IOput;
 import Matriks.*;
 
@@ -11,7 +10,7 @@ public class SPL {
         }
         System.out.println();
     }
-    public static boolean cekAllArray(int[] arr, int val){
+    public static boolean cekAllArray(String[] arr, String val){
         for(int i=0;i<arr.length;i++){
             if (arr[i]!=val) return false;
         }
@@ -242,12 +241,16 @@ public class SPL {
             kaidahCrammer(mat);
         }
 
-        if (menu!=4){
-            System.out.println("Solusi dari SPL tersebut adalah: ");
-            for(int i=0;i<byk_x;i++){
-                System.out.println("x"+String.valueOf(i+1)+" = "+solusi[i]);
+        if(menu!=4){
+            if (!cekAllArray(solusi, "")){
+                System.out.println("Solusi dari SPL tersebut adalah: ");
+                for(int i=0;i<byk_x;i++){
+                    System.out.println("x"+String.valueOf(i+1)+" = "+solusi[i]);
+                }
+            }else{
+                System.out.println("SPl tersebut tidak memiliki solusi.");
             }
-        }
+        }    
         System.out.println("Kembali ke Menu Utama.......");
     }
 
