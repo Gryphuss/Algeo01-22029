@@ -132,10 +132,18 @@ public class OBE {
                     }
 
                     if (!nonvalid2) {
-                        System.out.println(
-                                "Determinan dari matrix tersebut adalah: " + determinanKofaktor(matrig));
-                        // ini determinannya pake kofaktor harusnya sama aja sih sama OBE
-                        nonvalid = false;
+                        if (IOput.outputMode() == 2) {
+                            System.out.println(
+                                    "Determinan dari matrix tersebut adalah: " + IOput.df.format(determinanRB(matrig)));
+                            // ini determinannya pake kofaktor harusnya sama aja sih sama OBE
+                            nonvalid = false;
+                        } else if (IOput.outputMode() == 1) {
+                            String ooo = ("Determinan dari matrix tersebut adalah: "
+                                    + IOput.df.format(determinanRB(matrig)));
+                            IOput.writeStringToFile(ooo);
+                            nonvalid = false;
+                        }
+
                     }
                     break;
 
@@ -177,9 +185,15 @@ public class OBE {
                     }
 
                     if (!nonvalid3) {
-                        System.out.println(
-                                "Determinan dari matrix tersebut adalah: " + determinanKofaktor(matrig));
-                        nonvalid = false;
+                        if (IOput.outputMode() == 2) {
+                            System.out.println(
+                                    "Determinan dari matrix tersebut adalah: " + determinanKofaktor(matrig));
+                            nonvalid = false;
+                        } else if (IOput.outputMode() == 1) {
+                            String ooo = ("Determinan dari matrix tersebut adalah: " + determinanKofaktor(matrig));
+                            IOput.writeStringToFile(ooo);
+                            nonvalid = false;
+                        }
                     }
                     break;
             }
