@@ -4,12 +4,6 @@ import IO.IOput;
 import Matriks.*;
 
 public class SPL {
-    public static void displayArray(String[] arr){
-        for(int i=0;i<arr.length;i++){
-            System.out.print(arr[i]+" ");
-        }
-        System.out.println();
-    }
     public static boolean cekAllArray(String[] arr, String val){
         for(int i=0;i<arr.length;i++){
             if (arr[i]!=val) return false;
@@ -225,7 +219,7 @@ public class SPL {
             menu = obj.nextInt();
         }
         int roww,byk_x;
-        System.out.print("Masuukkan banyak persamaan: ");
+        System.out.print("Masukkan banyak persamaan: ");
         roww = obj.nextInt();
         System.out.print("Masukkan jumlah variabel peubah: ");
         byk_x = obj.nextInt();
