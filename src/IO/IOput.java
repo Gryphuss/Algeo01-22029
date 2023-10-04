@@ -56,7 +56,7 @@ public class IOput{
     public static void readFileToMatrix(Matrix mm){
     // Fungsi: membaca matrix dari file
         // membaca nama file
-        System.out.print("Masukkan Nama File:");
+        System.out.println("Masukkan Nama File:");
         Scanner scanFile = new Scanner(System.in);
         String nameFile = scanFile.nextLine();
         try {
@@ -181,7 +181,7 @@ public class IOput{
         }
     }
 
-    public static void readFileToMatrixRegresi(Matrix mm, Matrix x){
+    public static void readFileToMatrixRegresi(Matrix mm, Matrix x, int row, int col){
     // Fungsi: membaca matrix dari file
     // sekaligus membaca nilai x0-xn untuk mencari nilai f(x0,...,xn)
         // membaca namafile
@@ -195,8 +195,8 @@ public class IOput{
             int i,j;
             i = 0;
             j = 0;
-            mm.setRow(1);
-            mm.setCol(1);
+            mm.setRow(row+1);
+            mm.setCol(col+1);
             while (readFile.hasNext()) {
                 String cc = readFile.nextLine();
                 String[] mString = cc.split("\n");
@@ -207,11 +207,9 @@ public class IOput{
                         mm.mem[i][j] = f;
                         j++;
                     }
-                    mm.setCol(j);
                     j = 0;
                     i++;
                 }
-                mm.setRow(i); 
             }
             // membaca x0-xn
             for(int k = 0; k < mm.getCol(); k++){
