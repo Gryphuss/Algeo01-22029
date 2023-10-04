@@ -54,8 +54,8 @@ public class Interpolasi {
         String out = "f(x) =";
         for (int i = 0; i <= m.getRow() - 1; i++) {
             if (m.mem[i][m.getCol() - 1] != 0) {
-                String nega = String.format("%.4f", -m.mem[i][m.getCol() - 1]);
-                String posi = String.format("%.4f", m.mem[i][m.getCol() - 1]);
+                String nega = String.format("%.10f", -m.mem[i][m.getCol() - 1]);
+                String posi = String.format("%.10f", m.mem[i][m.getCol() - 1]);
                 if (i == 0) {
                     out += (m.mem[i][m.getCol() - 1] <= 0 ? " -" + nega : " " + posi);
                 } else if (i == 1) {
@@ -128,21 +128,27 @@ public class Interpolasi {
             Matrix finale = MatrixInterpolasi(matr);
             // finale.displayMatrix();
             String hasilpoli = InterpolasiPrint(finale);
-            System.out.println("Polinom yang melalui titik-titik tersebut adalah: ");
-            System.out.println(hasilpoli);
-
-            String finalres = hasilpoli;
-
             String hasily = HasilYPrint(finale, rightside.mem[0][0]);
-            System.out.println("Nilai y dari nilai x yang diinginkan adalah: ");
-            System.out.println(hasily);
 
-            finalres += "\n" + hasily;
+            if (IOput.outputMode() == 2) {
 
-            String out2 = ("Polinom yang melalui titik-titik tersebut adalah: " + hasilpoli
-                    + " dan nilai y dari nilai x yang diinginkan adalah: " + hasily);
+                System.out.println("Polinom yang melalui titik-titik tersebut adalah: ");
+                System.out.println(hasilpoli);
 
-            IOput.writeStringToFile(out2);
+                // String finalres = hasilpoli;
+
+                System.out.println("Nilai y dari nilai x yang diinginkan adalah: ");
+                System.out.println(hasily);
+                System.out.print("Returning to Main Menu.. ");
+                // finalres += "\n" + hasily;
+            } else if (IOput.outputMode() == 1) {
+                String out2 = ("Polinom yang melalui titik-titik tersebut adalah: " + hasilpoli
+                        + " dan nilai y dari nilai x yang diinginkan adalah: " + hasily);
+
+                IOput.writeStringToFile(out2);
+                System.out.print("Returning to Main Menu.. ");
+            }
         }
+
     }
 }
