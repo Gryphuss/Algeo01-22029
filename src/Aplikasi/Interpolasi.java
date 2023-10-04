@@ -139,7 +139,10 @@ public class Interpolasi {
 
             finalres += "\n" + hasily;
 
-            // nanti convert string to file di sini
+            String out2 = ("Polinom yang melalui titik-titik tersebut adalah: " + hasilpoli
+                    + " dan nilai y dari nilai x yang diinginkan adalah: " + hasily);
+
+            IOput.writeStringToFile(out2);
         }
     }
 }
