@@ -55,8 +55,9 @@ public class RLB {
             System.out.println("Masukkan nilai variabel-variabel peubah dan nilai y tiap sampel, dengan tiap sampel dipisahkan oleh enter. Formatnya sebagai berikut.");
             System.out.println("x11 x21 x31 .... xk1 y1\nx12 x22 x32 .... xk2 y2\n....\nx1i x2i x3i .... xki yi");
             IOput.readKeyboardToMatrix(mat);
-            System.out.println("Masukkan nilai variabel peubah yang ingin ditaksir nilai y, tiap nilai variabel dipisah dengan spasi");
+            System.out.print("Masukkan nilai variabel peubah yang ingin ditaksir nilai y");
             for(int i=0;i<coll;i++){
+                System.out.println("\nx "+String.valueOf(i+1)+" = ");
                 testCase.mem[0][i] = obj.nextDouble();
             }
         }
