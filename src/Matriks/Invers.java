@@ -26,7 +26,7 @@ public class Invers {
 
         if(false){
             IOput.writeMatrixToFile(m);
-        } else {
+        }else {
             // menampilkan hasil invers
             System.out.println("Matriks balikan dari matrix awal:\n");
             for (int i = 0; i < m.getRow(); i++) {

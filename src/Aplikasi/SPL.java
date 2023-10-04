@@ -221,7 +221,7 @@ public class SPL {
         }else{
             for(int i=0;i<roww;i++){
                 for(int j=0;j<byk_x;j++){
-                    System.out.print("\nMasukkan koefisien a("+(i+1)+","+(j+1)+"): ");
+                    System.out.print("Masukkan koefisien a("+(i+1)+","+(j+1)+"): ");
                     mat.mem[i][j] = obj.nextDouble();               
                 }
             }
@@ -231,6 +231,7 @@ public class SPL {
             }
         }
         String[] solusi = new String[byk_x];
+        String solusiString="";
         if(menu==1){
             solusi = SPLGauss(mat);
         }else if(menu==2){
@@ -238,19 +239,25 @@ public class SPL {
         }else if(menu==3){
             solusi = SPLInvers(mat);
         }else{
-            kaidahCrammer(mat);
+            solusiString = kaidahCrammer(mat);
         }
 
         if(menu!=4){
             if (!cekAllArray(solusi, "")){
-                System.out.println("Solusi dari SPL tersebut adalah: ");
+                solusiString="Solusi dari SPL tersebut adalah: \n";
                 for(int i=0;i<byk_x;i++){
-                    System.out.println("x"+String.valueOf(i+1)+" = "+solusi[i]);
+                    solusiString+="x"+String.valueOf(i+1)+" = "+solusi[i]+"\n";
                 }
             }else{
-                System.out.println("SPl tersebut tidak memiliki solusi.");
+                solusiString="SPl tersebut tidak memiliki solusi.\n";
             }
-        }    
+        }
+
+        if(IOput.outputMode()==1){
+            IOput.writeStringToFile(solusiString);
+        }else{
+            System.out.print(solusiString);
+        }
         System.out.println("Kembali ke Menu Utama.......");
     }
 

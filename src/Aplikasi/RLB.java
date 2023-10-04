@@ -62,20 +62,27 @@ public class RLB {
         }
 
         double[] solusi = solveRLB(mat);
+        String solusiString = "";
         String fungsi = "f(x) = "+String.valueOf(solusi[0]);
         for(int i=1;i<=coll;i++){
             if(solusi[i]>0) fungsi += "+";
             fungsi += String.valueOf(IOput.df.format(solusi[i]))+"x"+String.valueOf(i);
         }
         
-        System.out.println("Persamaan regresinya adalah "+fungsi);
-        System.out.print("Hasil dari taksiran nya adalah\ny = ");
+        solusiString = "Persamaan regresinya adalah "+fungsi;
+        solusiString += "\nHasil dari taksiran nya adalah\ny = ";
         double nilaiY = solusi[0];
         for(int i=1;i<=coll;i++){
             nilaiY += testCase.mem[0][i-1]*solusi[i];
         }
-        System.out.println(IOput.df.format(nilaiY)+"\n");
-
+        solusiString += String.valueOf(IOput.df.format(nilaiY))+"\n";
+        
+        if(IOput.outputMode()==1){
+            IOput.writeStringToFile(solusiString);
+        }else{
+            System.out.print(solusiString);
+        }
+        System.out.println("Kembali ke Menu Utama.....");
     }
 
     public static void main(String[] args){

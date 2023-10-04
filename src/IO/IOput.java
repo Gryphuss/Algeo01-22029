@@ -20,6 +20,7 @@ public class IOput{
         System.out.println("2. Pembacaan dari Keyboard");
         // memastikan input user benar
         while(true){
+            System.out.print("->");
             n = obj.nextInt();
             if(n!=1 && n!=2){
                 System.out.println("Pilihan hanya antara 1 atau 2!");
@@ -39,7 +40,7 @@ public class IOput{
         // Pertanyaan kepada user
         System.out.println("Tentukan metode output!");
         System.out.println("1. Penulisan ke File");
-        System.out.println("2. Penulisan k Keyboard");
+        System.out.println("2. Penulisan ke Keyboard");
         // memastikan input user benar
         while(true){
             n = obj.nextInt();
