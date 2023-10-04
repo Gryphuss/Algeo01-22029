@@ -182,7 +182,7 @@ public class IOput{
         }
     }
 
-    public static void readFileToMatrixRegresi(Matrix mm, Matrix x, int row, int col){
+    public static void readFileToMatrixRegresi(Matrix mm, Matrix x){
     // Fungsi: membaca matrix dari file
     // sekaligus membaca nilai x0-xn untuk mencari nilai f(x0,...,xn)
         // membaca namafile
@@ -196,8 +196,6 @@ public class IOput{
             int i,j;
             i = 0;
             j = 0;
-            mm.setRow(row+1);
-            mm.setCol(col+1);
             while (readFile.hasNext()) {
                 String cc = readFile.nextLine();
                 String[] mString = cc.split("\n");
@@ -205,7 +203,11 @@ public class IOput{
                     String [] mmString = num.split(" ");
                     for(String numnum : mmString){
                         double f = Double.parseDouble(numnum);
-                        mm.mem[i][j] = f;
+                        if(i == mm.getRow()){
+                            x.mem[0][j] = f;
+                        }else{
+                            mm.mem[i][j] = f;
+                        }
                         j++;
                     }
                     j = 0;
@@ -213,16 +215,18 @@ public class IOput{
                 }
             }
             // membaca x0-xn
-            for(int k = 0; k < mm.getCol(); k++){
-                x.mem[0][k] = mm.mem[i-1][k];
-            }
-            mm.setRow(i-1); 
+            //for(int k = 0; k < mm.getCol(); k++){
+                //x.mem[0][k] = mm.mem[i-1][k];
+            //}
+            //mm.setRow(i-1); 
             readFile.close();
         } catch (FileNotFoundException e) {
             // kasus error
             System.out.println("Error");
             e.printStackTrace();
         }
+        mm.displayMatrix();
+        x.displayMatrix();
     }
 
     public static void readKeyboardToMatrix(Matrix m){
