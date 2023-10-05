@@ -141,7 +141,7 @@ public class Interpolasi {
                 System.out.println(hasily);
                 System.out.print("Returning to Main Menu.. ");
                 // finalres += "\n" + hasily;
-            } else if (IOput.outputMode() == 1) {
+            } else{
                 String out2 = ("Polinom yang melalui titik-titik tersebut adalah: " + hasilpoli
                         + " dan nilai y dari nilai x yang diinginkan adalah: " + hasily);
 
