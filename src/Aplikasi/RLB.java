@@ -55,27 +55,35 @@ public class RLB {
             System.out.println("Masukkan nilai variabel-variabel peubah dan nilai y tiap sampel, dengan tiap sampel dipisahkan oleh enter. Formatnya sebagai berikut.");
             System.out.println("x11 x21 x31 .... xk1 y1\nx12 x22 x32 .... xk2 y2\n....\nx1i x2i x3i .... xki yi");
             IOput.readKeyboardToMatrix(mat);
-            System.out.println("Masukkan nilai variabel peubah yang ingin ditaksir nilai y, tiap nilai variabel dipisah dengan spasi");
+            System.out.print("Masukkan nilai variabel peubah yang ingin ditaksir nilai y");
             for(int i=0;i<coll;i++){
+                System.out.println("\nx "+String.valueOf(i+1)+" = ");
                 testCase.mem[0][i] = obj.nextDouble();
             }
         }
 
         double[] solusi = solveRLB(mat);
+        String solusiString = "";
         String fungsi = "f(x) = "+String.valueOf(solusi[0]);
         for(int i=1;i<=coll;i++){
             if(solusi[i]>0) fungsi += "+";
             fungsi += String.valueOf(IOput.df.format(solusi[i]))+"x"+String.valueOf(i);
         }
         
-        System.out.println("Persamaan regresinya adalah "+fungsi);
-        System.out.print("Hasil dari taksiran nya adalah\ny = ");
+        solusiString = "Persamaan regresinya adalah "+fungsi;
+        solusiString += "\nHasil dari taksiran nya adalah\ny = ";
         double nilaiY = solusi[0];
         for(int i=1;i<=coll;i++){
             nilaiY += testCase.mem[0][i-1]*solusi[i];
         }
-        System.out.println(IOput.df.format(nilaiY)+"\n");
-
+        solusiString += String.valueOf(IOput.df.format(nilaiY))+"\n";
+        
+        if(IOput.outputMode()==1){
+            IOput.writeStringToFile(solusiString);
+        }else{
+            System.out.print(solusiString);
+        }
+        System.out.println("Kembali ke Menu Utama.....\n");
     }
 
     public static void main(String[] args){

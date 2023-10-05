@@ -4,17 +4,17 @@ import java.util.Scanner;
 import IO.IOput;
 
 public class Invers {
-    public static void menuInvers(){
-    // Fungsi: menghasilkan matrix invers dari m
-        
+    public static void menuInvers() {
+        // Fungsi: menghasilkan matrix invers dari m
+
         Scanner obj = new Scanner(System.in);
         System.out.println("Masukan Ukuran Matrix Persegi:");
         int n = obj.nextInt();
         Matrix m = new Matrix(n, n);
-        if(IOput.inputMode() == 1){
+        if (IOput.inputMode() == 1) {
             IOput.readFileToMatrix(m);
 
-        }else{
+        } else {
             IOput.readKeyboardToMatrix(m);
         }
         // mensetup matrix
@@ -24,8 +24,9 @@ public class Invers {
         // mengambil matrix invers
         m = takeInvers(m);
 
-        if(false){
+        if (IOput.outputMode() == 1) {
             IOput.writeMatrixToFile(m);
+            System.out.print("Returning to Main Menu.. ");
         } else {
             // menampilkan hasil invers
             System.out.println("Matriks balikan dari matrix awal:\n");
@@ -37,6 +38,7 @@ public class Invers {
                 System.out.print("\n");
 
             }
+            System.out.print("Returning to Main Menu.. ");
         }
     }
 

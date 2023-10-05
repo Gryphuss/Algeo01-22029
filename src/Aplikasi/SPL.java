@@ -4,12 +4,6 @@ import IO.IOput;
 import Matriks.*;
 
 public class SPL {
-    public static void displayArray(String[] arr){
-        for(int i=0;i<arr.length;i++){
-            System.out.print(arr[i]+" ");
-        }
-        System.out.println();
-    }
     public static boolean cekAllArray(String[] arr, String val){
         for(int i=0;i<arr.length;i++){
             if (arr[i]!=val) return false;
@@ -17,9 +11,19 @@ public class SPL {
         return true;
     }
 
-    public static boolean cekAllArrayIdx(double[] arr, int val,int awal,int akhir){
+    public static boolean cekRangeArray(double[] arr, int val,int awal,int akhir){
         for(int i=awal;i<=akhir;i++){
             if (arr[i]!=val) return false;
+        }
+        return true;
+    }
+
+    public static boolean cekAdaSolusi(Matrix m){
+        for(int i=m.getRow()-1;i>=0;i--){
+            if(cekRangeArray(m.mem[i], 0, 0, m.getCol()-2)&&m.mem[i][m.getCol()-1]!=0){
+                return false;
+            }
+            if(m.findColLead1(i)<m.getCol()-1 && m.findColLead1(i)!=-1) break;
         }
         return true;
     }
@@ -38,7 +42,7 @@ public class SPL {
         Arrays.fill(solusi, "");
 
         OBE.Gauss(m);
-        if(cekAllArrayIdx(m.mem[row-1], 0, 0, col-2) && m.mem[row-1][col-1]!=0) return solusi;
+        if(!cekAdaSolusi(m)) return solusi;
 
         char varParam = 'a';
         for(int i=row-1;i>=0;i--){
@@ -93,7 +97,7 @@ public class SPL {
         Arrays.fill(solusi, "");
 
         OBE.GaussJordan(m);
-        if(cekAllArrayIdx(m.mem[row-1], 0, 0, col-2) && m.mem[row-1][col-1]!=0) return solusi;
+        if(!cekAdaSolusi(m)) return solusi;
         
         char varParam = 'a';
         for(int i=row-1;i>=0;i--){
@@ -235,7 +239,7 @@ public class SPL {
             menu = obj.nextInt();
         }
         int roww,byk_x;
-        System.out.print("Masuukkan banyak persamaan: ");
+        System.out.print("Masukkan banyak persamaan: ");
         roww = obj.nextInt();
         System.out.print("Masukkan jumlah variabel peubah: ");
         byk_x = obj.nextInt();
@@ -246,7 +250,7 @@ public class SPL {
         }else{
             for(int i=0;i<roww;i++){
                 for(int j=0;j<byk_x;j++){
-                    System.out.print("\nMasukkan koefisien a("+(i+1)+","+(j+1)+"): ");
+                    System.out.print("Masukkan koefisien a("+(i+1)+","+(j+1)+"): ");
                     mat.mem[i][j] = obj.nextDouble();               
                 }
             }
@@ -256,6 +260,7 @@ public class SPL {
             }
         }
         String[] solusi = new String[byk_x];
+        String solusiString="";
         if(menu==1){
             solusi = SPLGauss(mat);
         }else if(menu==2){
@@ -263,20 +268,26 @@ public class SPL {
         }else if(menu==3){
             solusi = SPLInvers(mat);
         }else{
-            kaidahCrammer(mat);
+            solusiString = kaidahCrammer(mat);
         }
 
         if(menu!=4){
-            if (!cekAllArray(solusi, "")){
-                System.out.println("Solusi dari SPL tersebut adalah: ");
+            if(!cekAllArray(solusi, "")){
+                solusiString="Solusi dari SPL tersebut adalah: \n";
                 for(int i=0;i<byk_x;i++){
-                    System.out.println("x"+String.valueOf(i+1)+" = "+solusi[i]);
+                    solusiString+="x"+String.valueOf(i+1)+" = "+solusi[i]+"\n";
                 }
             }else{
-                System.out.println("SPl tersebut tidak memiliki solusi.");
+                solusiString="SPl tersebut tidak memiliki solusi.\n";
             }
-        }    
-        System.out.println("Kembali ke Menu Utama.......");
+        }
+
+        if(IOput.outputMode()==1){
+            IOput.writeStringToFile(solusiString);
+        }else{
+            System.out.print(solusiString);
+        }
+        System.out.println("Kembali ke Menu Utama.......\n");
     }
 
     public static void main(String[] args){

@@ -78,7 +78,42 @@ public class OBE {
         }
         return det;
     }
-/* 
+
+    public static double determinanRB(Matrix mdet) {
+        Matrix m = new Matrix(mdet.getRow(), mdet.getCol());
+        for (int i = 0; i < mdet.getRow(); i++) {
+            for (int j = 0; j < mdet.getCol(); j++) {
+                m.mem[i][j] = mdet.mem[i][j];
+            }
+        }
+        double det = 1;
+        int r = 0, c = 0;
+        while (r < m.getRow() && c < m.getCol()) {
+            int rpivot = r;
+            while (rpivot < m.getRow() - 1 && m.mem[rpivot][c] == 0) {
+                rpivot++;
+            }
+
+            if (m.mem[rpivot][c] != 0) {
+                if (r != rpivot) {
+                    m.swapRow(r, rpivot);
+                    det *= (-1);
+                }
+                for (int i = r + 1; i < m.getRow(); i++) {
+                    double s = -m.mem[i][c] / m.mem[r][c];
+                    m.tambahRow(i, r, s);
+                }
+                r++;
+            }
+            c++;
+        }
+        
+        for (int i = 0; i < m.getRow(); i++) { 
+            det *= m.mem[i][i];
+        }
+        return det;
+    }
+
     public static void mainmenu() {
         System.out.println("DETERMINAN");
         System.out.println("Options: ");
@@ -131,10 +166,18 @@ public class OBE {
                     }
 
                     if (!nonvalid2) {
-                        System.out.println(
-                                "Determinan dari matrix tersebut adalah: " + determinanKofaktor(matrig));
-                        // ini determinannya pake kofaktor harusnya sama aja sih sama OBE
-                        nonvalid = false;
+                        if (IOput.outputMode() == 2) {
+                            System.out.println(
+                                    "Determinan dari matrix tersebut adalah: " + IOput.df.format(determinanRB(matrig)));
+                            // ini determinannya pake kofaktor harusnya sama aja sih sama OBE
+                            nonvalid = false;
+                        } else if (IOput.outputMode() == 1) {
+                            String ooo = ("Determinan dari matrix tersebut adalah: "
+                                    + IOput.df.format(determinanRB(matrig)));
+                            IOput.writeStringToFile(ooo);
+                            nonvalid = false;
+                        }
+
                     }
                     break;
 
@@ -176,9 +219,15 @@ public class OBE {
                     }
 
                     if (!nonvalid3) {
-                        System.out.println(
-                                "Determinan dari matrix tersebut adalah: " + determinanKofaktor(matrig));
-                        nonvalid = false;
+                        if (IOput.outputMode() == 2) {
+                            System.out.println(
+                                    "Determinan dari matrix tersebut adalah: " + determinanKofaktor(matrig));
+                            nonvalid = false;
+                        } else if (IOput.outputMode() == 1) {
+                            String ooo = ("Determinan dari matrix tersebut adalah: " + determinanKofaktor(matrig));
+                            IOput.writeStringToFile(ooo);
+                            nonvalid = false;
+                        }
                     }
                     break;
             }
@@ -186,5 +235,5 @@ public class OBE {
         if (!nonvalid) {
             System.out.print("Returning to Main Menu.. ");
         }
-    }*/
+    }
 }
