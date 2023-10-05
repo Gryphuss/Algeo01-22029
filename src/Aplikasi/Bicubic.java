@@ -42,30 +42,26 @@ public class Bicubic{
         // menentukan jenis input
         if(IOput.inputMode() == 1){
             IOput.readFileToMatrixBicubic(m,xy);
-            m.displayMatrix();
+
         }else{
             IOput.readKeyboardToMatrix(m);
             xy.mem[0][0] = m.mem[4][0];
             xy.mem[0][1] = m.mem[4][1];
             m.setRow(4);
-            m.displayMatrix();
+
         }
         x = xy.mem[0][0];
         y = xy.mem[0][1];
-        System.out.println(x);
-        System.out.println(y);
         // proses menghitung f(x,y)
         m = setBicubic(m);
-        m.displayMatrix();
         Matrix mx = new Matrix(0,0);
 
         mx = buatX();
-        mx.displayMatrix();
         mx = Invers.invers(mx);
-        mx.displayMatrix();
         double f;
         f = bicubicInterpolation(x,y,m,mx); 
         // output
+        System.out.println("f(x,y) = ΣiΣj(a_ij * x^i * y^)");
         System.out.println(f);
 
     }
@@ -130,8 +126,6 @@ public class Bicubic{
         Matrix mhasil = new Matrix(0,0);
         // proses mengisi matrix mhasil
         mhasil = mhasil.kali(mX,mIn);
-        mhasil.displayMatrix();
-        System.out.println("ini diproses");
         
         // menghitung f(x,y)
         double hasil = 0;

@@ -2,7 +2,6 @@ package Matriks;
 
 public class OBE {
     public static void Gauss(Matrix m) {
-
         int rowLead = 0;
         for (int i = 0; i < m.getCol(); i++) {
             boolean col0 = true;
