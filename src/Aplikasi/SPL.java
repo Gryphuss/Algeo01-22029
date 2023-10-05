@@ -11,9 +11,19 @@ public class SPL {
         return true;
     }
 
-    public static boolean cekAllArrayIdx(double[] arr, int val,int awal,int akhir){
+    public static boolean cekRangeArray(double[] arr, int val,int awal,int akhir){
         for(int i=awal;i<=akhir;i++){
             if (arr[i]!=val) return false;
+        }
+        return true;
+    }
+
+    public static boolean cekAdaSolusi(Matrix m){
+        for(int i=m.getRow()-1;i>=0;i--){
+            if(cekRangeArray(m.mem[i], 0, 0, m.getCol()-2)&&m.mem[i][m.getCol()-1]!=0){
+                return false;
+            }
+            if(m.findColLead1(i)<m.getCol()-1 && m.findColLead1(i)!=-1) break;
         }
         return true;
     }
@@ -32,7 +42,7 @@ public class SPL {
         Arrays.fill(solusi, "");
 
         OBE.Gauss(m);
-        if(cekAllArrayIdx(m.mem[row-1], 0, 0, col-2) && m.mem[row-1][col-1]!=0) return solusi;
+        if(!cekAdaSolusi(m)) return solusi;
 
         char varParam = 'a';
         for(int i=row-1;i>=0;i--){
@@ -87,7 +97,7 @@ public class SPL {
         Arrays.fill(solusi, "");
 
         OBE.GaussJordan(m);
-        if(cekAllArrayIdx(m.mem[row-1], 0, 0, col-2) && m.mem[row-1][col-1]!=0) return solusi;
+        if(!cekAdaSolusi(m)) return solusi;
         
         char varParam = 'a';
         for(int i=row-1;i>=0;i--){

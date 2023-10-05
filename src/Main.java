@@ -18,7 +18,7 @@ public class Main {
         int pilihan = obj.nextInt();
         while(pilihan<1 || pilihan>7){
             System.out.println("Input tidak sesuai! Silahkan coba lagi.");
-            System.out.print("->");
+            System.out.print("-> ");
             pilihan = obj.nextInt();
         }
 
