@@ -1,4 +1,0 @@
-Persamaan regresinya adalah f(x) = 0.5509132795513826-0.00145x1+0.00580x2+0.00040x3
-Hasil dari taksiran nya adalah
-y = 0.90000
-

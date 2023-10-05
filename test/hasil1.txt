@@ -1,5 +1,0 @@
-Solusi dari SPL tersebut adalah: 
-x1 = 0.666666666666667
-x2 = -2.666666666666667
-x3 = -1.0
-
