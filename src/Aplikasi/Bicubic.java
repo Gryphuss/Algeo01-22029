@@ -61,10 +61,17 @@ public class Bicubic{
         double f;
         f = bicubicInterpolation(x,y,m,mx); 
         // output
-        System.out.println("f(x,y) = ΣiΣj(a_ij * x^i * y^)");
-        System.out.println(f);
 
+        if(IOput.outputMode()==1){
+            IOput.writeStringToFile("f(x,y) = ΣiΣj(a_ij * x^i * y^) = " + Double.toString(f));
+        }else{
+            System.out.println("f(x,y) = ΣiΣj(a_ij * x^i * y^j)" + Double.toString(f));
+        }
+        System.out.println("Kembali ke Menu Utama.....\n");
+    
     }
+
+
 
     public static Matrix buatX(){
     // Fungsi: membuat matrix X

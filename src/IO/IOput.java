@@ -40,7 +40,7 @@ public class IOput{
         // Pertanyaan kepada user
         System.out.println("Tentukan metode output!");
         System.out.println("1. Penulisan ke File");
-        System.out.println("2. Penulisan ke Keyboard");
+        System.out.println("2. Penulisan ke Terminal");
         // memastikan input user benar
         while(true){
             n = obj.nextInt();
@@ -225,8 +225,6 @@ public class IOput{
             System.out.println("Error");
             e.printStackTrace();
         }
-        mm.displayMatrix();
-        x.displayMatrix();
     }
 
     public static void readKeyboardToMatrix(Matrix m){

@@ -6,23 +6,33 @@ import IO.IOput;
 public class Invers {
     public static void menuInvers() {
         // Fungsi: menghasilkan matrix invers dari m
-
         Scanner obj = new Scanner(System.in);
+        System.out.println("Metode Invers");
+        System.out.println("1. Metode Gauss-Jordan");
+        System.out.println("2. Metode Adjoin");
+        System.out.println("Pilih metode invers:");
+        int met = obj.nextInt();
         System.out.println("Masukan Ukuran Matrix Persegi:");
         int n = obj.nextInt();
         Matrix m = new Matrix(n, n);
         if (IOput.inputMode() == 1) {
             IOput.readFileToMatrix(m);
-
         } else {
             IOput.readKeyboardToMatrix(m);
         }
-        // mensetup matrix
-        m = setUpInvers(m);
-        // menginvers matrix
-        OBE.GaussJordan(m);
-        // mengambil matrix invers
-        m = takeInvers(m);
+
+        if(met == 1){
+            // mensetup matrix
+            m = setUpInvers(m);
+            // menginvers matrix
+            OBE.GaussJordan(m);
+            // mengambil matrix invers
+            m = takeInvers(m);
+        }else{
+            
+        }
+        
+
 
         if (IOput.outputMode() == 1) {
             IOput.writeMatrixToFile(m);
