@@ -303,8 +303,4 @@ public class SPL {
         }
         System.out.println("Kembali ke Menu Utama.......\n");
     }
-
-    public static void main(String[] args){
-        menuSPL();
-    }
 }
