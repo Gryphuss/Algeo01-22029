@@ -127,7 +127,6 @@ public class Invers {
         Matrix kofak = matrixKofak(m);
         kofak.transpose();
         double detM = OBE.determinanKofaktor(m);
-        System.out.println(detM);
         for(int i=0;i<kofak.getRow();i++){
             kofak.bagiRow(i, detM);
         }
