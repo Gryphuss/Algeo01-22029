@@ -354,6 +354,4 @@ public class IOput{
             e.printStackTrace();
         }
     }
-
-    public static final DecimalFormat df = new DecimalFormat("0.00000");
 }

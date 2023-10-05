@@ -1,7 +1,9 @@
 package Matriks;
+import java.text.DecimalFormat;
 import java.util.*;
 import IO.IOput;
 public class OBE {
+    public static final DecimalFormat df = new DecimalFormat("0.00");
     public static Scanner input = new Scanner(System.in);
     public static void Gauss(Matrix m) {
         int rowLead = 0;
@@ -170,12 +172,11 @@ public class OBE {
                     if (!nonvalid2) {
                         if (IOput.outputMode() == 2) {
                             System.out.println(
-                                    "Determinan dari matrix tersebut adalah: " + IOput.df.format(determinanRB(matrig)));
+                                    "Determinan dari matrix tersebut adalah: " + df.format(determinanRB(matrig)));
                             // ini determinannya pake kofaktor harusnya sama aja sih sama OBE
                             nonvalid = false;
                         } else{
-                            String ooo = ("Determinan dari matrix tersebut adalah: "
-                                    + IOput.df.format(determinanRB(matrig)));
+                            String ooo = ("Determinan dari matrix tersebut adalah: "+df.format(determinanRB(matrig)));
                             IOput.writeStringToFile(ooo);
                             nonvalid = false;
                         }
@@ -235,7 +236,7 @@ public class OBE {
             }
         }
         if (!nonvalid) {
-            System.out.print("Returning to Main Menu.. ");
+            System.out.println("Returning to Main Menu.. ");
         }
     }
 }

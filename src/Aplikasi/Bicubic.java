@@ -4,7 +4,6 @@ import IO.*;
 import java.util.*;
 
 public class Bicubic{
-
     // Fungsi-fungsi untuk membuatt matrix X
     public static int f(int x, int y, int i, int j){
         return ((int)Math.pow(x,i) * (int)Math.pow(y,j));

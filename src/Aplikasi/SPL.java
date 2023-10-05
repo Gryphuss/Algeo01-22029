@@ -1,9 +1,11 @@
 package Aplikasi;
+import java.text.DecimalFormat;
 import java.util.*;
 import IO.IOput;
 import Matriks.*;
 
 public class SPL {
+    public static final DecimalFormat df = new DecimalFormat("0.00");
     public static boolean cekAllArray(String[] arr, String val){
         for(int i=0;i<arr.length;i++){
             if (arr[i]!=val) return false;
@@ -77,14 +79,20 @@ public class SPL {
                     if(jmlhParam[colLead][j]==-1){
                         solusi[colLead] += "-";
                     }else if(jmlhParam[colLead][j]!=1){
-                        solusi[colLead] += String.valueOf(jmlhParam[colLead][j]); 
+                        solusi[colLead] += String.valueOf(df.format(jmlhParam[colLead][j])); 
                     }
                     solusi[colLead] += String.valueOf(solusi[j]);
                 }
             }
             if(konstanta[colLead]>0 && solusi[colLead]!="") solusi[colLead] += "+";
             if(konstanta[colLead]!=0 || solusi[colLead]==""){
-                solusi[colLead] += String.valueOf(konstanta[colLead]);
+                solusi[colLead] += String.valueOf(df.format(konstanta[colLead]));
+            }
+        }
+        for(int i=0;i<col-1;i++){
+            if(solusi[i]==""){
+                solusi[i] = String.valueOf(varParam);
+                varParam+=1;
             }
         }
         return solusi;    
@@ -114,19 +122,25 @@ public class SPL {
 
                     if(m.mem[i][j]>0){
                         solusi[colLead] += "-";
-                        if(m.mem[i][j]!=1) solusi[colLead] += String.valueOf(m.mem[i][j]);
+                        if(m.mem[i][j]!=1) solusi[colLead] += String.valueOf(df.format(m.mem[i][j]));
                         solusi[colLead] += solusi[j];
                     }else{
                         double val = m.mem[i][j]*(-1);
                         if(solusi[colLead]!="") solusi[colLead] += "+";
-                        if(val!=1) solusi[colLead] += String.valueOf(val); 
+                        if(val!=1) solusi[colLead] += String.valueOf(df.format(val)); 
                         solusi[colLead] += solusi[j];
                     }
                 }
             }
             if(konstanta>0 && solusi[colLead]!="") solusi[colLead] += "+";
             if(konstanta!=0 || solusi[colLead]==""){
-                solusi[colLead] += String.valueOf(konstanta);
+                solusi[colLead] += String.valueOf(df.format(konstanta));
+            }
+        }
+        for(int i=0;i<col-1;i++){
+            if(solusi[i]==""){
+                solusi[i] = String.valueOf(varParam);
+                varParam+=1;
             }
         }
         return solusi;
@@ -183,49 +197,49 @@ public class SPL {
 
     public static String[] SPLInvers(Matrix M){
 
-    if(M.getCol() != M.getRow()+1){
-        String[] str = new String[1];
-        str[0] = "";
-        System.out.println("Matriks bukan persegi.");
-        System.out.println("Matriks tidak memiliki balikan sehingga solusi SPL tidak bisa diselesaikan.");
-        return str;
-    }else{
-        Matrix mKoef = new Matrix(M.getRow(), M.getRow());
-        for(int i = 0; i < M.getRow(); i++){
-            for(int j=0; j < M.getRow(); j++){
-                mKoef.mem[i][j] = M.mem[i][j];
-            }
-        }
-        if(OBE.determinanKofaktor(mKoef) == 0){
-            System.out.println("Determinan matriks nol");
-            System.out.println("Matriks tidak memiliki balikan sehingga solusi SPL tidak bisa diselesaikan");
+        if(M.getCol() != M.getRow()+1){
             String[] str = new String[1];
             str[0] = "";
+            System.out.println("Matriks bukan persegi.");
+            System.out.println("Matriks tidak memiliki balikan sehingga solusi SPL tidak bisa diselesaikan.");
             return str;
         }else{
-            Matrix koef = new Matrix(M.getRow(),M.getRow());
-            Matrix kons = new Matrix(M.getRow(),1);
+            Matrix mKoef = new Matrix(M.getRow(), M.getRow());
             for(int i = 0; i < M.getRow(); i++){
-                for(int j = 0; j < M.getCol()-1 ; j++){
-                    koef.mem[i][j] = M.mem[i][j];
+                for(int j=0; j < M.getRow(); j++){
+                    mKoef.mem[i][j] = M.mem[i][j];
                 }
             }
-    
-            for(int k = 0; k < M.getRow(); k++){
-                kons.mem[k][0] = M.mem[k][M.getCol()-1];
+            if(OBE.determinanKofaktor(mKoef) == 0){
+                System.out.println("Determinan matriks nol");
+                System.out.println("Matriks tidak memiliki balikan sehingga solusi SPL tidak bisa diselesaikan");
+                String[] str = new String[1];
+                str[0] = "";
+                return str;
+            }else{
+                Matrix koef = new Matrix(M.getRow(),M.getRow());
+                Matrix kons = new Matrix(M.getRow(),1);
+                for(int i = 0; i < M.getRow(); i++){
+                    for(int j = 0; j < M.getCol()-1 ; j++){
+                        koef.mem[i][j] = M.mem[i][j];
+                    }
+                }
+        
+                for(int k = 0; k < M.getRow(); k++){
+                    kons.mem[k][0] = M.mem[k][M.getCol()-1];
+                }
+        
+                Matrix hasil = new Matrix(M.getRow(),1);
+                hasil = hasil.kali(Invers.invers(koef),kons);
+                
+        
+                String[] str = new String[hasil.getRow()];
+                for(int a = 0; a < hasil.getRow(); a++){
+                    str[a] = df.format(hasil.mem[a][0]);
+                }
+                return str;
             }
-    
-            Matrix hasil = new Matrix(M.getRow(),1);
-            hasil = hasil.kali(Invers.invers(koef),kons);
-            
-    
-            String[] str = new String[hasil.getRow()];
-            for(int a = 0; a < hasil.getRow(); a++){
-                str[a] = Double.toString(hasil.mem[a][0]);
-            }
-            return str;
         }
-    }
     }
     
     public static void menuSPL(){

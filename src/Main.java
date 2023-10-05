@@ -14,7 +14,7 @@ public class Main {
         System.out.println("5. Interpolasi Bicubic Spline");
         System.out.println("6. Regresi Linear Berganda");
         System.out.println("7. Keluar Kalkulator");
-        System.out.print("->");
+        System.out.print("-> ");
         int pilihan = obj.nextInt();
         while(pilihan<1 || pilihan>7){
             System.out.println("Input tidak sesuai! Silahkan coba lagi.");
