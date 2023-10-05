@@ -5,7 +5,6 @@ import IO.*;
 import Matriks.*;
 
 public class RLB {
-    public static final DecimalFormat df = new DecimalFormat("0.00000");
     public static double[] solveRLB(Matrix m){
         // Matrix m, row adalah jmlh sampel, col adalah jmlh peubah
         Matrix eqMLR = new Matrix(m.getCol(), m.getCol()+1);
@@ -68,8 +67,8 @@ public class RLB {
         String solusiString = "";
         String fungsi = "f(x) = "+String.valueOf(solusi[0]);
         for(int i=1;i<=coll;i++){
-            if(solusi[i]>0) fungsi += "+";
-            fungsi += String.valueOf(df.format(solusi[i]))+"x"+String.valueOf(i);
+            if(solusi[i]>0) fungsi += "+ ";
+            fungsi += String.valueOf(solusi[i])+"x"+String.valueOf(i)+" ";
         }
         
         solusiString = "Persamaan regresinya adalah "+fungsi;
@@ -78,7 +77,7 @@ public class RLB {
         for(int i=1;i<=coll;i++){
             nilaiY += testCase.mem[0][i-1]*solusi[i];
         }
-        solusiString += String.valueOf(df.format(nilaiY))+"\n";
+        solusiString += String.valueOf(nilaiY)+"\n";
         
         if(IOput.outputMode()==1){
             IOput.writeStringToFile(solusiString);
@@ -86,10 +85,6 @@ public class RLB {
             System.out.print(solusiString);
         }
         System.out.println("Kembali ke Menu Utama.....\n");
-    }
-
-    public static void main(String[] args){
-        menuRLB();
     }
 
 }
