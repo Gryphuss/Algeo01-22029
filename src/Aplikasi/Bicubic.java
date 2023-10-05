@@ -65,7 +65,7 @@ public class Bicubic{
         if(IOput.outputMode()==1){
             IOput.writeStringToFile("f(x,y) = ΣiΣj(a_ij * x^i * y^) = " + Double.toString(f));
         }else{
-            System.out.println("f(x,y) = ΣiΣj(a_ij * x^i * y^j)" + Double.toString(f));
+            System.out.println("f(x,y) = ΣiΣj(a_ij * x^i * y^j) = " + Double.toString(f));
         }
         System.out.println("Kembali ke Menu Utama.....\n");
     

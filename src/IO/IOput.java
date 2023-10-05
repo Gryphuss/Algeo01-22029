@@ -98,7 +98,7 @@ public class IOput{
         Scanner scanFile = new Scanner(System.in);
         String nameFile = new String();
         // scanFile.nextLine();
-        System.out.print("Masukkan nama file yang diinginkan: ");
+        // System.out.print("Masukkan nama file yang diinginkan: ");
         nameFile = scanFile.nextLine();
         try {
             File file = new File("../test/"+nameFile);
